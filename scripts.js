@@ -147,6 +147,23 @@ const UIManager = {
             twilightBtn: document.getElementById('btn-twilight'),
             endMessage: document.querySelector('.end-message')
         };
+
+        // Randomize Home Screen
+        this.randomizeHomeContent();
+    },
+
+    randomizeHomeContent() {
+        if (typeof OPENING_WHISPERS !== 'undefined') {
+            const whisper = OPENING_WHISPERS[Math.floor(Math.random() * OPENING_WHISPERS.length)];
+            const whisperEl = document.querySelector('.whisper');
+            if (whisperEl) whisperEl.textContent = whisper;
+        }
+
+        if (typeof BUTTON_LABELS !== 'undefined') {
+            const label = BUTTON_LABELS[Math.floor(Math.random() * BUTTON_LABELS.length)];
+            const btn = document.getElementById('btn-anxious');
+            if (btn) btn.textContent = label;
+        }
     },
 
     showScreen(name) {

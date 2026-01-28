@@ -95,7 +95,21 @@ const elements = {
     btnDistractionDone: document.getElementById('btn-distraction-done'),
     scriptText: document.getElementById('script-text'),
     actionText: document.getElementById('action-text'),
-    breatheText: document.getElementById('breathe-text'),
+    // breatheText: document.getElementById('breathe-text'), // REMOVED
+    labels: [
+        document.querySelector('.label-top'),    // Inhale (Phase 0)
+        document.querySelector('.label-right'),  // Hold (Phase 1) - Visual flow is Top->Right->Bottom->Left? 
+        // Wait, animation goes: Top-Left -> Top-Right (Top edge).
+        // Then Top-Right -> Bottom-Right (Right edge).
+        // So Phase 0 = Top Edge. Phase 1 = Right Edge.
+        document.querySelector('.label-bottom'), // Exhale (Phase 2) ?? Wait. 
+        // Box Path: 
+        // 0-25%: Top Edge (Left to Right). Label: Top (Inhale)
+        // 25-50%: Right Edge (Top to Bottom). Label: Right (Hold)
+        // 50-75%: Bottom Edge (Right to Left). Label: Bottom (Exhale)
+        // 75-100%: Left Edge (Bottom to Top). Label: Left (Hold)
+        document.querySelector('.label-left')
+    ],
     logButtons: document.querySelectorAll('.btn-log')
 };
 
@@ -108,23 +122,36 @@ let breathingInterval;
 
 function startBoxBreathing() {
     clearInterval(breathingInterval);
-    const textEl = elements.breatheText;
 
     // Cycle: Inhale (4s) -> Hold (4s) -> Exhale (4s) -> Hold (4s)
-    let phase = 0; // 0=In, 1=Hold, 2=Out, 3=Hold
+    let phase = 0; // 0=Top, 1=Right, 2=Bottom, 3=Left
 
-    const updateText = () => {
-        switch (phase) {
-            case 0: textEl.textContent = "Inhale..."; break;
-            case 1: textEl.textContent = "Hold..."; break;
-            case 2: textEl.textContent = "Exhale..."; break;
-            case 3: textEl.textContent = "Hold..."; break;
-        }
+    const updateLabels = () => {
+        // Reset all
+        // Re-query to be safe or use static? Static is fine if elements exist.
+        // Actually elements.labels array isn't fully safe if I just querySelector'd it at top.
+        // Let's re-query to ensure they are found.
+        const labels = [
+            document.querySelector('.label-top'),
+            document.querySelector('.label-right'),
+            document.querySelector('.label-bottom'),
+            document.querySelector('.label-left')
+        ];
+
+        labels.forEach((el, index) => {
+            if (index === phase) {
+                el.classList.add('active');
+                vibrate(20); // Subtle tick for phase change
+            } else {
+                el.classList.remove('active');
+            }
+        });
+
         phase = (phase + 1) % 4;
     };
 
-    updateText(); // Initial
-    breathingInterval = setInterval(updateText, 4000); // Update every 4s
+    updateLabels(); // Initial
+    breathingInterval = setInterval(updateLabels, 4000); // Update every 4s
 }
 
 function stopBoxBreathing() {

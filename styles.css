@@ -422,6 +422,67 @@ button:focus-visible {
     box-shadow: 0 0 20px var(--accent-warm);
     /* 4s * 4 sides = 16s total loop */
     animation: boxPath 16s linear infinite;
+    z-index: 2;
+}
+
+/* Creative Labels */
+.breathe-label {
+    position: absolute;
+    font-size: 0.9rem;
+    color: var(--text-secondary);
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    font-weight: 500;
+    transition: all 0.5s ease;
+    opacity: 0.3;
+}
+
+.breathe-label.active {
+    color: var(--accent-warm);
+    opacity: 1;
+    text-shadow: 0 0 10px var(--accent-warm);
+    transform: scale(1.1);
+}
+
+.label-top {
+    top: -40px;
+    left: 50%;
+    transform: translateX(-50%);
+}
+
+.label-right {
+    right: -50px;
+    top: 50%;
+    transform: translateY(-50%) rotate(90deg);
+}
+
+.label-bottom {
+    bottom: -40px;
+    left: 50%;
+    transform: translateX(-50%);
+}
+
+.label-left {
+    left: -50px;
+    top: 50%;
+    transform: translateY(-50%) rotate(-90deg);
+}
+
+/* Active State Transforms (Need to override specific transforms) */
+.label-top.active {
+    transform: translateX(-50%) scale(1.2);
+}
+
+.label-right.active {
+    transform: translateY(-50%) rotate(90deg) scale(1.2);
+}
+
+.label-bottom.active {
+    transform: translateX(-50%) scale(1.2);
+}
+
+.label-left.active {
+    transform: translateY(-50%) rotate(-90deg) scale(1.2);
 }
 
 @keyframes boxPath {

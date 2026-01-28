@@ -31,9 +31,15 @@
                     I'm awake and anxious
                 </button>
 
-                <button id="btn-noise" class="btn-icon" aria-label="Toggle Brown Noise">
-                    🔇
-                </button>
+                <div class="global-controls"
+                    style="position: absolute; top: 20px; right: 20px; display: flex; gap: 10px;">
+                    <button id="btn-twilight" class="btn-icon" aria-label="Toggle Twilight Mode">
+                        🌙
+                    </button>
+                    <button id="btn-noise" class="btn-icon" aria-label="Toggle Brown Noise">
+                        🔇
+                    </button>
+                </div>
 
                 <p class="footer-text">Offline ready • No tracking</p>
             </div>
@@ -99,6 +105,14 @@
                 <div id="rescue-content" class="rescue-body">
                     <!-- Dynamic Content -->
                 </div>
+                <!-- Candle Visualizer -->
+                <div id="candle-container" class="candle-container">
+                    <div class="candle">
+                        <div class="flame"></div>
+                    </div>
+                    <p class="candle-base">Focus on the flame</p>
+                </div>
+
                 <div class="rescue-buttons">
                     <button id="btn-rescue-done" class="btn-main">This helped</button>
                     <button id="btn-rescue-next" class="btn-ghost">Try something else</button>
@@ -130,6 +144,10 @@
         </section>
     </div>
 
+    <script src="data.js"></script>
+    <script src="techniques/boxBreathing.js"></script>
+    <script src="techniques/breath478.js"></script>
+    <script src="techniques/candleFlicker.js"></script>
     <script src="scripts.js"></script>
 </body>
 

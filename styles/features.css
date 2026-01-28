@@ -1,0 +1,334 @@
+/* ============================================
+   SAT - Feature Styles
+   Breathing visualizations, Rescue toolkit, Candle, Worry Burner
+   ============================================ */
+
+/* Box Breathing */
+.breathe-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: var(--space-xl);
+    width: 100%;
+}
+
+.box-breathing {
+    width: 200px;
+    height: 200px;
+    border: 2px solid rgba(255, 255, 255, 0.1);
+    border-radius: 12px;
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: rgba(255, 255, 255, 0.02);
+}
+
+.box-dot {
+    width: 20px;
+    height: 20px;
+    background: var(--accent-warm);
+    border-radius: 50%;
+    position: absolute;
+    box-shadow: 0 0 20px var(--accent-warm);
+    animation: boxPath 16s linear infinite;
+    z-index: 2;
+}
+
+.breathe-label {
+    position: absolute;
+    font-size: 0.9rem;
+    color: var(--text-secondary);
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    font-weight: 500;
+    transition: all 0.5s ease;
+    opacity: 0.3;
+}
+
+.breathe-label.active {
+    color: var(--accent-warm);
+    opacity: 1;
+    text-shadow: 0 0 10px var(--accent-warm);
+    transform: scale(1.1);
+}
+
+.label-top {
+    top: -40px;
+    left: 50%;
+    transform: translateX(-50%);
+}
+
+.label-right {
+    right: -50px;
+    top: 50%;
+    transform: translateY(-50%) rotate(90deg);
+}
+
+.label-bottom {
+    bottom: -40px;
+    left: 50%;
+    transform: translateX(-50%);
+}
+
+.label-left {
+    left: -50px;
+    top: 50%;
+    transform: translateY(-50%) rotate(-90deg);
+}
+
+.label-top.active {
+    transform: translateX(-50%) scale(1.2);
+}
+
+.label-right.active {
+    transform: translateY(-50%) rotate(90deg) scale(1.2);
+}
+
+.label-bottom.active {
+    transform: translateX(-50%) scale(1.2);
+}
+
+.label-left.active {
+    transform: translateY(-50%) rotate(-90deg) scale(1.2);
+}
+
+@keyframes boxPath {
+    0% {
+        top: -10px;
+        left: -10px;
+    }
+
+    25% {
+        top: -10px;
+        left: 190px;
+    }
+
+    50% {
+        top: 190px;
+        left: 190px;
+    }
+
+    75% {
+        top: 190px;
+        left: -10px;
+    }
+
+    100% {
+        top: -10px;
+        left: -10px;
+    }
+}
+
+.breathe-buttons {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-md);
+    align-items: center;
+}
+
+/* Rescue Toolkit */
+.rescue-container {
+    max-width: 450px;
+    width: 90%;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-lg);
+    padding: var(--space-xl);
+    border-radius: 20px;
+    position: relative;
+    overflow: hidden;
+}
+
+.rescue-title {
+    font-family: var(--font-serif);
+    font-size: 1.5rem;
+    color: var(--accent-warm);
+    margin-top: var(--space-sm);
+}
+
+.rescue-body {
+    font-size: 1.1rem;
+    line-height: 1.6;
+    color: var(--text-primary);
+    min-height: 120px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.rescue-buttons {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    width: 100%;
+}
+
+.text-highlight {
+    color: var(--accent-glow);
+    font-weight: 500;
+    display: block;
+    margin-top: 10px;
+    font-size: 1.2em;
+}
+
+/* Candle Flicker */
+.candle-container {
+    display: none;
+    justify-content: center;
+    flex-direction: column;
+    align-items: center;
+    gap: 2rem;
+    margin: 3rem 0;
+}
+
+.candle {
+    width: 60px;
+    height: 120px;
+    background: linear-gradient(180deg, #fff3e0 0%, #ff9800 100%);
+    border-radius: 8px 8px 0 0;
+    position: relative;
+    box-shadow: 0 10px 30px rgba(255, 152, 0, 0.4);
+}
+
+.flame {
+    position: absolute;
+    top: -30px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 30px;
+    height: 50px;
+    background: radial-gradient(ellipse at center, #fff 0%, #ffd700 30%, #ff8c00 60%, transparent 100%);
+    border-radius: 50% 50% 50% 50% / 60% 60% 40% 40%;
+    box-shadow: 0 0 20px rgba(255, 140, 0, 0.8);
+    animation: flicker 0.3s infinite alternate;
+}
+
+@keyframes flicker {
+    0% {
+        transform: translateX(-50%) scaleY(1) scaleX(1);
+        opacity: 1;
+    }
+
+    50% {
+        transform: translateX(-50%) scaleY(0.95) scaleX(1.05);
+        opacity: 0.9;
+    }
+
+    100% {
+        transform: translateX(-50%) scaleY(1.05) scaleX(0.95);
+        opacity: 1;
+    }
+}
+
+.candle-base {
+    font-size: 0.9rem;
+    color: var(--text-muted);
+    font-style: italic;
+}
+
+/* Hypnotic Canvas */
+.hypnotic-canvas {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    z-index: -2;
+    opacity: 0.6;
+}
+
+/* Worry Burner */
+.worry-container {
+    max-width: 500px;
+    padding: 3rem 2rem;
+    text-align: center;
+}
+
+.worry-title {
+    font-size: 2rem;
+    font-weight: 300;
+    margin-bottom: 0.5rem;
+    color: var(--accent-warm);
+}
+
+.worry-subtitle {
+    font-size: 1rem;
+    opacity: 0.7;
+    margin-bottom: 2rem;
+}
+
+.worry-input {
+    width: 100%;
+    min-height: 150px;
+    padding: 1.5rem;
+    background: rgba(30, 30, 40, 0.5);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 12px;
+    color: var(--text-primary);
+    font-family: var(--font-sans);
+    font-size: 1.1rem;
+    line-height: 1.6;
+    resize: vertical;
+    margin-bottom: 2rem;
+    transition: all 0.3s ease;
+}
+
+.worry-input:focus {
+    outline: none;
+    border-color: var(--accent-warm);
+    background: rgba(30, 30, 40, 0.7);
+}
+
+.worry-input::placeholder {
+    opacity: 0.4;
+}
+
+.worry-buttons {
+    display: flex;
+    gap: 1rem;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
+.burn-canvas {
+    position: absolute;
+    top: 25%;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 90%;
+    max-width: 500px;
+    height: 200px;
+    display: none;
+    pointer-events: none;
+}
+
+/* Sound Controls */
+.sound-controls {
+    display: flex;
+    gap: 0.5rem;
+    margin-top: 1rem;
+}
+
+.btn-sound {
+    padding: 0.6rem 1rem;
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 8px;
+    color: var(--text-primary);
+    font-size: 0.9rem;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.btn-sound:hover {
+    background: rgba(255, 255, 255, 0.1);
+    border-color: var(--accent-warm);
+}
+
+.btn-sound.active {
+    background: var(--accent-warm);
+    border-color: var(--accent-warm);
+    color: var(--color-bg);
+}

@@ -1,0 +1,153 @@
+/* ============================================
+   SAT - Screen Styles
+   Individual screen layouts (Home, Script, Action, Log, Rescue, etc.)
+   ============================================ */
+
+/* Home Screen */
+.home-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    gap: var(--space-lg);
+}
+
+.whisper {
+    font-size: 0.9rem;
+    color: var(--text-muted);
+    font-style: italic;
+    letter-spacing: 0.02em;
+    animation: fadeIn 1s ease 0.5s both;
+}
+
+.footer-text {
+    font-family: var(--font-ui);
+    font-size: 0.7rem;
+    color: var(--text-muted);
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+    animation: fadeIn 1s ease 1s both;
+}
+
+/* Script Screen */
+.script-container {
+    max-width: 600px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: var(--space-xl);
+}
+
+.script-body {
+    font-size: 1.25rem;
+    line-height: 1.9;
+    color: var(--text-primary);
+    text-align: center;
+    animation: fadeInUp 0.8s ease both;
+}
+
+/* Action Screen */
+.action-container {
+    max-width: 500px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: var(--space-lg);
+    text-align: center;
+}
+
+.action-prompt {
+    font-size: 1rem;
+    color: var(--text-secondary);
+    animation: fadeIn 0.6s ease both;
+}
+
+.action-card {
+    border-radius: 16px;
+    padding: var(--space-lg);
+    width: 100%;
+    animation: fadeInUp 0.6s ease 0.2s both;
+}
+
+.action-body {
+    font-size: 1.1rem;
+    color: var(--text-primary);
+    line-height: 1.6;
+}
+
+.action-buttons {
+    display: flex;
+    gap: var(--space-sm);
+    animation: fadeIn 0.5s ease 0.4s both;
+}
+
+/* Log Screen */
+.log-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: var(--space-lg);
+    text-align: center;
+}
+
+.log-prompt {
+    font-size: 1.1rem;
+    color: var(--text-secondary);
+    animation: fadeIn 0.6s ease both;
+}
+
+.log-buttons {
+    display: flex;
+    gap: var(--space-sm);
+    flex-wrap: wrap;
+    justify-content: center;
+    animation: fadeInUp 0.6s ease 0.2s both;
+}
+
+/* End Screen */
+.end-container {
+    text-align: center;
+}
+
+.end-message {
+    font-size: 1.4rem;
+    line-height: 2;
+    color: var(--text-primary);
+    animation: fadeIn 1s ease both;
+}
+
+/* Permission Screen */
+.permission-container {
+    text-align: center;
+    padding: var(--space-xl);
+    border-top: 4px solid var(--accent-warm);
+}
+
+.permission-title {
+    font-family: var(--font-serif);
+    font-size: 1.8rem;
+    color: var(--accent-warm);
+    margin-bottom: var(--space-lg);
+}
+
+.permission-body {
+    font-size: 1.1rem;
+    line-height: 1.8;
+    color: var(--text-primary);
+    margin-bottom: var(--space-xl);
+}
+
+.permission-sig {
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+    padding-top: var(--space-md);
+    margin-bottom: var(--space-lg);
+    font-family: monospace;
+    color: var(--text-secondary);
+    font-size: 0.9rem;
+}
+
+.permission-sig span {
+    color: #4caf50;
+    font-weight: bold;
+    text-shadow: 0 0 10px rgba(76, 175, 80, 0.3);
+}

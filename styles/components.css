@@ -1,0 +1,144 @@
+/* ============================================
+   SAT - Component Styles
+   Buttons, cards, and reusable UI elements
+   ============================================ */
+
+/* Buttons */
+.btn-main {
+    font-family: var(--font-ui);
+    font-size: 1.1rem;
+    font-weight: 500;
+    color: var(--text-primary);
+    background: var(--bg-card);
+    border: 1px solid var(--border-subtle);
+    padding: var(--space-md) var(--space-xl);
+    border-radius: 50px;
+    cursor: pointer;
+    transition: all var(--transition-medium);
+    box-shadow:
+        0 0 30px var(--accent-glow),
+        inset 0 1px 0 rgba(255, 255, 255, 0.05);
+    animation: pulse 4s ease-in-out infinite;
+}
+
+.btn-main:hover,
+.btn-main:focus {
+    background: var(--bg-secondary);
+    border-color: var(--accent-warm);
+    transform: scale(1.02);
+    box-shadow:
+        0 0 50px var(--accent-glow),
+        0 0 80px rgba(212, 165, 116, 0.1);
+}
+
+.btn-main:active {
+    transform: scale(0.98);
+}
+
+.btn-secondary {
+    font-family: var(--font-ui);
+    font-size: 0.95rem;
+    font-weight: 400;
+    color: var(--text-secondary);
+    background: transparent;
+    border: 1px solid var(--border-subtle);
+    padding: var(--space-sm) var(--space-lg);
+    border-radius: 30px;
+    cursor: pointer;
+    transition: all var(--transition-medium);
+    animation: fadeIn 0.5s ease 0.5s both;
+}
+
+.btn-secondary:hover,
+.btn-secondary:focus {
+    color: var(--text-primary);
+    border-color: var(--accent-warm);
+    background: rgba(212, 165, 116, 0.08);
+}
+
+.btn-ghost {
+    font-family: var(--font-ui);
+    font-size: 0.9rem;
+    color: var(--text-muted);
+    background: transparent;
+    border: none;
+    padding: var(--space-sm) var(--space-md);
+    cursor: pointer;
+    transition: color var(--transition-medium);
+}
+
+.btn-ghost:hover {
+    color: var(--text-secondary);
+}
+
+.btn-icon {
+    background: rgba(0, 0, 0, 0.3);
+    backdrop-filter: blur(4px);
+    border: 1px solid var(--border-subtle);
+    color: var(--text-secondary);
+    width: 44px;
+    height: 44px;
+    border-radius: 50%;
+    font-size: 1.2rem;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 100;
+}
+
+.btn-icon:hover {
+    background: rgba(255, 255, 255, 0.05);
+    color: var(--text-primary);
+    border-color: var(--accent-warm);
+}
+
+.btn-icon.active {
+    background: var(--accent-glow);
+    color: var(--accent-warm);
+    border-color: var(--accent-warm);
+    box-shadow: 0 0 15px var(--accent-glow);
+    animation: pulse 2s infinite;
+}
+
+.btn-log {
+    font-family: var(--font-ui);
+    font-size: 0.95rem;
+    color: var(--text-primary);
+    background: var(--bg-card);
+    border: 1px solid var(--border-subtle);
+    padding: var(--space-sm) var(--space-md);
+    border-radius: 12px;
+    cursor: pointer;
+    transition: all var(--transition-medium);
+    min-width: 90px;
+}
+
+.btn-log:hover {
+    border-color: var(--accent-warm);
+    background: rgba(212, 165, 116, 0.08);
+}
+
+.btn-text-danger {
+    background: none;
+    border: none;
+    color: #ff6b6b;
+    font-family: var(--font-ui);
+    font-size: 0.9rem;
+    cursor: pointer;
+    opacity: 0.7;
+    transition: opacity 0.3s;
+}
+
+.btn-text-danger:hover {
+    opacity: 1;
+}
+
+/* Glass Panel */
+.glass-panel {
+    background: rgba(26, 26, 26, 0.7);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(10px);
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+}

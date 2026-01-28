@@ -18,10 +18,16 @@
     <link
         href="https://fonts.googleapis.com/css2?family=Merriweather:ital,wght@0,300;0,400;1,300&family=Inter:wght@400;500&display=swap"
         rel="stylesheet">
-    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="styles/base.css">
+    <link rel="stylesheet" href="styles/components.css">
+    <link rel="stylesheet" href="styles/screens.css">
+    <link rel="stylesheet" href="styles/features.css">
 </head>
 
 <body>
+    <!-- Hypnotic Background Canvas -->
+    <canvas id="hypnotic-canvas" class="hypnotic-canvas"></canvas>
+
     <div id="app">
         <!-- Screen 1: Home -->
         <section id="screen-home" class="screen active">
@@ -120,7 +126,22 @@
             </div>
         </section>
 
-        <!-- Screen 7: Permission (After Better) -->
+        <!-- Screen 7.5: Worry Burner -->
+        <section id="screen-worry" class="screen">
+            <div class="worry-container glass-panel">
+                <h2 class="worry-title">Burn It Away</h2>
+                <p class="worry-subtitle">What's keeping you awake?</p>
+                <textarea id="worry-input" class="worry-input" placeholder="Type it here... then let it go."
+                    maxlength="300"></textarea>
+                <div class="worry-buttons">
+                    <button id="btn-worry-burn" class="btn-main">🔥 Let Go</button>
+                    <button id="btn-worry-skip" class="btn-ghost">Skip</button>
+                </div>
+                <canvas id="burn-canvas" class="burn-canvas"></canvas>
+            </div>
+        </section>
+
+        <!-- Screen 8: Permission (After Better) -->
         <section id="screen-permission" class="screen">
             <div class="permission-container glass-panel">
                 <p class="permission-title">Permission Granted</p>

@@ -3,21 +3,27 @@
    Offline-First Caching Strategy
    ============================================ */
 
-const CACHE_NAME = 'sat-v20';
+const CACHE_NAME = 'sat-v22';
 
 const ASSETS_TO_CACHE = [
     '/',
     '/index.html',
-    '/styles.css',
+    '/styles/base.css',
+    '/styles/components.css',
+    '/styles/screens.css',
+    '/styles/features.css',
     '/data.js',
     '/techniques/boxBreathing.js',
     '/techniques/breath478.js',
     '/techniques/candleFlicker.js',
+    '/techniques/worryBurner.js',
     '/modules/state.js',
     '/modules/audio.js',
     '/modules/ui.js',
     '/modules/techniqueManager.js',
     '/modules/app.js',
+    '/modules/canvas.js',
+    '/modules/soundscapePlus.js',
     '/manifest.json',
     '/icons/icon-192.png',
     '/icons/icon-512.png'

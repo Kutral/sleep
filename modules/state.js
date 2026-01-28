@@ -33,7 +33,6 @@ const StateManager = {
         const script = available[Math.floor(Math.random() * available.length)];
         this.data.usedScriptIds.push(script && script.id);
         return script || SCRIPTS[0];
-        return script || SCRIPTS[0];
     },
 
     getRandomRescueMethod() {

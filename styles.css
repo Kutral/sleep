@@ -144,7 +144,8 @@ body {
 }
 
 .btn-icon {
-    background: transparent;
+    background: rgba(0, 0, 0, 0.3);
+    backdrop-filter: blur(4px);
     border: 1px solid var(--border-subtle);
     color: var(--text-secondary);
     width: 44px;
@@ -156,6 +157,15 @@ body {
     display: flex;
     align-items: center;
     justify-content: center;
+    z-index: 100;
+    /* Always on top */
+}
+
+.global-audio-btn {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    animation: fadeIn 2s ease 1s both;
 }
 
 .btn-icon:hover {
@@ -542,25 +552,104 @@ button:focus-visible {
 }
 
 /* ============================================
-   Distraction Screen
+   Rescue Toolkit (Dynamic)
    ============================================ */
-.distraction-container {
-    max-width: 400px;
+.rescue-container {
+    max-width: 450px;
+    width: 90%;
     text-align: center;
     display: flex;
     flex-direction: column;
     gap: var(--space-lg);
+    padding: var(--space-xl);
+    border-radius: 20px;
+    position: relative;
+    overflow: hidden;
 }
 
-.distraction-title {
-    font-size: 1.2rem;
+.rescue-badge {
+    position: absolute;
+    top: 15px;
+    right: 15px;
+    font-size: 0.7rem;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    color: var(--text-secondary);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    padding: 4px 8px;
+    border-radius: 12px;
+}
+
+.rescue-title {
+    font-family: var(--font-serif);
+    font-size: 1.5rem;
     color: var(--accent-warm);
+    margin-top: var(--space-sm);
 }
 
-.distraction-body {
-    font-size: 1.4rem;
+.rescue-body {
+    font-size: 1.1rem;
     line-height: 1.6;
     color: var(--text-primary);
+    min-height: 120px;
+    /* Prevent jumpiness */
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.rescue-buttons {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    width: 100%;
+}
+
+.text-highlight {
+    color: var(--accent-glow);
+    font-weight: 500;
+    display: block;
+    margin-top: 10px;
+    font-size: 1.2em;
+}
+
+/* ============================================
+   Permission Screen
+   ============================================ */
+.permission-container {
+    text-align: center;
+    padding: var(--space-xl);
+    border-top: 4px solid var(--accent-warm);
+}
+
+.permission-title {
+    font-family: var(--font-serif);
+    font-size: 1.8rem;
+    color: var(--accent-warm);
+    margin-bottom: var(--space-lg);
+}
+
+.permission-body {
+    font-size: 1.1rem;
+    line-height: 1.8;
+    color: var(--text-primary);
+    margin-bottom: var(--space-xl);
+}
+
+.permission-sig {
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+    padding-top: var(--space-md);
+    margin-bottom: var(--space-lg);
+    font-family: monospace;
+    color: var(--text-secondary);
+    font-size: 0.9rem;
+}
+
+.permission-sig span {
+    color: #4caf50;
+    /* Green */
+    font-weight: bold;
+    text-shadow: 0 0 10px rgba(76, 175, 80, 0.3);
 }
 
 /* Subtle Background Pulse */

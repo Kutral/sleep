@@ -91,19 +91,38 @@
             </div>
         </section>
 
-        <!-- Screen 6: Distraction (Fallback) -->
-        <section id="screen-distraction" class="screen">
-            <div class="distraction-container glass-panel">
-                <p class="distraction-title">Let's switch channels.</p>
-                <p class="distraction-body">
-                    Count backwards from 100 by 7s.<br><br>
-                    <span style="color: var(--text-secondary); font-size: 0.9em;">100... 93... 86...</span>
-                </p>
-                <button id="btn-distraction-done" class="btn-main">Okay, I'm tired now</button>
+        <!-- Screen 6: Rescue Toolkit (Dynamic) -->
+        <section id="screen-rescue" class="screen">
+            <div class="rescue-container glass-panel">
+                <span class="rescue-badge">Technique #<span id="rescue-id">1</span></span>
+                <h2 id="rescue-title" class="rescue-title">Title</h2>
+                <div id="rescue-content" class="rescue-body">
+                    <!-- Dynamic Content -->
+                </div>
+                <div class="rescue-buttons">
+                    <button id="btn-rescue-done" class="btn-main">This helped</button>
+                    <button id="btn-rescue-next" class="btn-ghost">Try something else</button>
+                </div>
             </div>
         </section>
 
-        <!-- Screen 7: End -->
+        <!-- Screen 7: Permission (After Better) -->
+        <section id="screen-permission" class="screen">
+            <div class="permission-container glass-panel">
+                <p class="permission-title">Permission Granted</p>
+                <p class="permission-body">
+                    You have done the work.<br>
+                    You have faced the anxiety.<br>
+                    You are safe now.
+                </p>
+                <div class="permission-sig">
+                    <p>Status: <span>Ready to Rest</span></p>
+                </div>
+                <button id="btn-permission-done" class="btn-main">Goodnight</button>
+            </div>
+        </section>
+
+        <!-- Screen 8: End -->
         <section id="screen-end" class="screen">
             <div class="end-container">
                 <p class="end-message">You are safe.<br>Rest well.</p>

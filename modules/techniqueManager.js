@@ -9,8 +9,8 @@ const TechniqueManager = {
 
     startRescue(method) {
         // Reset UI
-        // Depends on UIManager to be available globally
         if (typeof UIManager === 'undefined') return;
+        this.stopAll();
 
         UIManager.elements.rescueTitle.textContent = method.title;
         UIManager.elements.rescueContent.innerHTML = method.text;
@@ -20,14 +20,13 @@ const TechniqueManager = {
         if (method.title === "4-7-8 Breathing" && window.Breath478) {
             UIManager.elements.rescueContent.style.display = 'none';
             Breath478.start();
-        } else if (method.text && method.text.includes("candle") && window.CandleFlicker) {
-            // Trigger candle if text mentions it or title matches
-        }
-
-        // Manual override for Candle
-        if (method.title.includes("Candle") || method.text.includes("candle")) {
+        } else if (method.title === "Worry Burner" && window.WorryBurner) {
+            UIManager.showScreen('worry');
+            // WorryBurner.start() is called by button in bindEvents
+        } else if (method.title.includes("Candle") || method.text.includes("candle")) {
             if (window.CandleFlicker) {
-                UIManager.elements.rescueContent.style.display = 'none';
+                const candleContainer = document.getElementById('candle-container');
+                if (candleContainer) candleContainer.style.display = 'flex';
                 CandleFlicker.start();
             }
         }
@@ -36,6 +35,11 @@ const TechniqueManager = {
     stopAll() {
         if (window.BoxBreathing) BoxBreathing.stop();
         if (window.Breath478) Breath478.stop();
-        if (window.CandleFlicker) CandleFlicker.stop();
+        if (window.CandleFlicker) {
+            CandleFlicker.stop();
+            const candleContainer = document.getElementById('candle-container');
+            if (candleContainer) candleContainer.style.display = 'none';
+        }
+        if (window.WorryBurner) WorryBurner.stop();
     }
 };

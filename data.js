@@ -81,15 +81,15 @@
     // RESCUE METHODS (10 Scientific)
     // ============================================
     window.RESCUE_METHODS = [
+        { title: "Worry Burner", text: "Write down the thought that is haunting you. Then, watch it burn into nothingness. <br><br>The light of the flame will carry the weight for you." },
         { title: "Cognitive Shuffling", text: "Visualize random objects that start with the same letter. <br><br>Example: Letter 'B'.<br><span class='text-highlight'>Ball... Bear... Boat... Bread...</span><br><br>When you run out, pick a new letter." },
         { title: "4-7-8 Breathing", text: "A natural tranquilizer for the nervous system.<br><br>1. Inhale through nose for <b>4s</b>.<br>2. Hold breath for <b>7s</b>.<br>3. Exhale forcefully through mouth for <b>8s</b>." },
+        { title: "The Candle Flame", text: "Losing yourself in the flicker of a flame can reset the nervous system. Focus only on the dance of the light." },
         { title: "The 5-4-3-2-1 Grounding", text: "Identify specifically:<br><br>5 things you see.<br>4 things you can touch.<br>3 things you hear.<br>2 things you can smell.<br>1 thing you can taste." },
         { title: "Progressive Relaxation", text: "Squeeze your toes hard for 5 seconds. Then release completely.<br><br>Now move to your calves. Squeeze, release.<br><br>Slowly work your way up to your face." },
         { title: "Paradoxical Intention", text: "Stop trying to sleep. Instead, <span class='text-highlight'>try to stay awake.</span><br><br>Keep your eyes open in the dark. Tell yourself 'I will not sleep.'<br><br>This removes the performance anxiety of sleeping." },
         { title: "The Physiological Sigh", text: "Reset your CO2 levels instantly.<br><br>1. Double inhale through nose (one long, one short).<br>2. Very long exhale through mouth.<br><br>Repeat 3 times." },
         { title: "Cognitive Distraction", text: "Engage your logical brain to dampen the emotional brain.<br><br>Count backwards from <b>100</b> by <b>7s</b>.<br><span class='text-highlight'>100... 93... 86... 79...</span>" },
-        { title: "The 'Grateful 3'", text: "Find three tiny, specific things from the last 24 hours designed just for you.<br><br>1. The warmth of coffee.<br>2. A text from a friend.<br>3. The cool pillow side." },
-        { title: "Temperature Drop", text: "Your body needs to cool down to sleep.<br><br>Visualize your body sinking into a pool of cool, heavy mercury.<br><br>Feel the heat draining out of your hands and feet." },
-        { title: "Mental Walk", text: "Retrace your steps from this morning in excruciating detail.<br><br>Woke up. Feet on floor. Cold tile. Walked to door. Turned handle...<br><br>Don't skip a single micro-movement." }
+        { title: "The 'Grateful 3'", text: "Find three tiny, specific things from the last 24 hours designed just for you.<br><br>1. The warmth of coffee.<br>2. A text from a friend.<br>3. The cool pillow side." }
     ];
 })();

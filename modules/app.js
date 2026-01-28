@@ -8,6 +8,10 @@ const App = {
         UIManager.init();
         this.bindEvents();
 
+        // New Feature Init
+        if (window.HypnoticCanvas) HypnoticCanvas.init();
+        if (window.SoundscapePlus) SoundscapePlus.init();
+
         // Service Worker
         if ('serviceWorker' in navigator) {
             navigator.serviceWorker.register('sw.js');
@@ -24,13 +28,52 @@ const App = {
             });
         }
 
-        // Noise
+        // Noise (Generic toggle, now using SoundscapePlus if available)
         const btnNoise = document.getElementById('btn-noise');
         if (btnNoise) {
             btnNoise.addEventListener('click', () => {
                 AudioManager.vibrate(20);
                 const isPlaying = AudioManager.toggleNoise();
                 UIManager.updateNoiseIcon(isPlaying);
+            });
+        }
+
+        // Soundscape Buttons
+        document.querySelectorAll('.btn-sound').forEach(btn => {
+            btn.addEventListener('click', (e) => {
+                AudioManager.vibrate(20);
+                const sound = e.currentTarget.dataset.sound;
+                const isPlaying = SoundscapePlus.play(sound);
+
+                // Update UI state
+                document.querySelectorAll('.btn-sound').forEach(b => b.classList.remove('active'));
+                if (isPlaying) {
+                    e.currentTarget.classList.add('active');
+                    // If playing soundscape, turn off the general brown noise
+                    if (AudioManager.isPlaying) {
+                        AudioManager.fadeOut();
+                        UIManager.updateNoiseIcon(false);
+                    }
+                }
+            });
+        });
+
+        // Worry Burner Events
+        const btnBurn = document.getElementById('btn-worry-burn');
+        if (btnBurn) {
+            btnBurn.addEventListener('click', () => {
+                AudioManager.vibrate(50);
+                if (window.WorryBurner) WorryBurner.start();
+                setTimeout(() => {
+                    UIManager.showScreen('permission');
+                }, 3500);
+            });
+        }
+
+        const btnWorrySkip = document.getElementById('btn-worry-skip');
+        if (btnWorrySkip) {
+            btnWorrySkip.addEventListener('click', () => {
+                UIManager.showScreen('rescue');
             });
         }
 
@@ -65,8 +108,14 @@ const App = {
                 if (feeling === 'better') {
                     UIManager.showScreen('permission');
                 } else {
-                    UIManager.showScreen('breathe');
-                    TechniqueManager.startBoxBreathing();
+                    // Randomize initial breathing intervention
+                    if (Math.random() > 0.5 && window.Breath478) {
+                        UIManager.showScreen('rescue');
+                        TechniqueManager.startRescue({ title: "4-7-8 Breathing", text: "" });
+                    } else {
+                        UIManager.showScreen('breathe');
+                        TechniqueManager.startBoxBreathing();
+                    }
                 }
             });
         });
@@ -97,6 +146,9 @@ const App = {
                 });
             }
         });
+
+        // Fade to Black Timer Init
+        this.startInactivityTimer();
     },
 
     triggerRandomRescue() {

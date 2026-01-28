@@ -170,3 +170,128 @@ button:focus-visible {
     outline: 2px solid var(--accent-warm);
     outline-offset: 2px;
 }
+
+/* ============================================
+   MOBILE & PWA OPTIMIZATIONS
+   ============================================ */
+
+/* Safe Area Insets for notched devices */
+@supports (padding: env(safe-area-inset-bottom)) {
+    .screen {
+        padding-bottom: calc(var(--space-lg) + env(safe-area-inset-bottom));
+        padding-top: calc(var(--space-lg) + env(safe-area-inset-top));
+        padding-left: calc(var(--space-lg) + env(safe-area-inset-left));
+        padding-right: calc(var(--space-lg) + env(safe-area-inset-right));
+    }
+}
+
+/* Prevent overscroll/bounce on iOS */
+html,
+body {
+    overscroll-behavior: none;
+    -webkit-overflow-scrolling: touch;
+}
+
+/* Full height for PWA on mobile */
+html {
+    height: -webkit-fill-available;
+}
+
+body {
+    min-height: -webkit-fill-available;
+}
+
+/* Larger touch targets for mobile */
+@media (max-width: 768px) {
+    .btn-main {
+        padding: 1.25rem 2.5rem;
+        font-size: 1.1rem;
+        min-height: 56px;
+    }
+
+    .btn-secondary,
+    .btn-ghost,
+    .btn-log {
+        min-height: 48px;
+        padding: 0.875rem 1.5rem;
+    }
+
+    .btn-icon {
+        width: 48px;
+        height: 48px;
+        font-size: 1.3rem;
+    }
+
+    .btn-sound {
+        padding: 0.75rem 1.25rem;
+        font-size: 1rem;
+    }
+
+    /* Reduce animation intensity on mobile for performance */
+    @media (prefers-reduced-motion: reduce) {
+
+        *,
+        *::before,
+        *::after {
+            animation-duration: 0.01ms !important;
+            animation-iteration-count: 1 !important;
+            transition-duration: 0.01ms !important;
+        }
+    }
+}
+
+/* Small mobile screens */
+@media (max-width: 375px) {
+    html {
+        font-size: 15px;
+    }
+
+    .btn-main {
+        padding: 1rem 1.75rem;
+        width: 90%;
+    }
+
+    .sound-controls {
+        flex-wrap: wrap;
+        justify-content: center;
+    }
+
+    .btn-sound {
+        font-size: 0.85rem;
+        padding: 0.5rem 0.75rem;
+    }
+}
+
+/* Landscape mobile */
+@media (max-height: 500px) and (orientation: landscape) {
+    .screen {
+        padding: var(--space-sm);
+    }
+
+    .script-body {
+        font-size: 1rem;
+        line-height: 1.6;
+    }
+
+    .rescue-container {
+        padding: var(--space-md);
+    }
+}
+
+/* Disable hover effects on touch devices */
+@media (hover: none) and (pointer: coarse) {
+
+    .btn-main:hover,
+    .btn-secondary:hover,
+    .btn-ghost:hover,
+    .btn-icon:hover {
+        transform: none;
+    }
+}
+
+/* PWA standalone mode adjustments */
+@media all and (display-mode: standalone) {
+    .footer-text {
+        display: none;
+    }
+}

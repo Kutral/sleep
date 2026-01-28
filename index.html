@@ -3,12 +3,14 @@
 
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no, viewport-fit=cover">
     <meta name="theme-color" content="#0a0a0a">
     <meta name="description" content="Break the 2 AM anxiety loop. A gentle companion for sleepless nights.">
     <meta name="mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <meta name="format-detection" content="telephone=no">
+    <meta name="apple-mobile-web-app-title" content="SAT">
     <title>SAT - Sleep Anxiety Tracker</title>
     <link rel="manifest" href="manifest.json">
     <link rel="icon" type="image/png" sizes="192x192" href="icons/icon-192.png">
@@ -38,13 +40,20 @@
                 </button>
 
                 <div class="global-controls"
-                    style="position: absolute; top: 20px; right: 20px; display: flex; gap: 10px;">
-                    <button id="btn-twilight" class="btn-icon" aria-label="Toggle Twilight Mode">
-                        🌙
-                    </button>
-                    <button id="btn-noise" class="btn-icon" aria-label="Toggle Brown Noise">
-                        🔇
-                    </button>
+                    style="position: absolute; top: 20px; right: 20px; display: flex; flex-direction: column; gap: 10px; align-items: flex-end;">
+                    <div style="display: flex; gap: 10px;">
+                        <button id="btn-twilight" class="btn-icon" aria-label="Toggle Twilight Mode">
+                            🌙
+                        </button>
+                        <button id="btn-noise" class="btn-icon" aria-label="Toggle Brown Noise">
+                            🔇
+                        </button>
+                    </div>
+                    <div class="sound-controls" id="sound-controls">
+                        <button class="btn-sound" data-sound="rain">🌧️ Rain</button>
+                        <button class="btn-sound" data-sound="fire">🔥 Fire</button>
+                        <button class="btn-sound" data-sound="thunder">⛈️ Thunder</button>
+                    </div>
                 </div>
 
                 <p class="footer-text">Offline ready • No tracking</p>
@@ -169,10 +178,13 @@
     <script src="techniques/boxBreathing.js"></script>
     <script src="techniques/breath478.js"></script>
     <script src="techniques/candleFlicker.js"></script>
+    <script src="techniques/worryBurner.js"></script>
 
     <!-- Modules -->
     <script src="modules/state.js"></script>
     <script src="modules/audio.js"></script>
+    <script src="modules/canvas.js"></script>
+    <script src="modules/soundscapePlus.js"></script>
     <script src="modules/techniqueManager.js"></script>
     <script src="modules/ui.js"></script>
     <script src="modules/app.js"></script>

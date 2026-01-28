@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+    <meta name="theme-color" content="#0a0a0a">
+    <meta name="description" content="Break the 2 AM anxiety loop. A gentle companion for sleepless nights.">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <title>SAT - Sleep Anxiety Tracker</title>
+    <link rel="manifest" href="manifest.json">
+    <link rel="icon" type="image/png" sizes="192x192" href="icons/icon-192.png">
+    <link rel="apple-touch-icon" href="icons/icon-192.png">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Merriweather:ital,wght@0,300;0,400;1,300&family=Inter:wght@400;500&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+</head>
+
+<body>
+    <div id="app">
+        <!-- Screen 1: Home -->
+        <section id="screen-home" class="screen active">
+            <div class="home-container">
+                <p class="whisper">It's okay to be here.</p>
+                <button id="btn-anxious" class="btn-main" aria-label="I'm awake and anxious">
+                    I'm awake and anxious
+                </button>
+                <p class="footer-text">Offline ready • No tracking</p>
+            </div>
+        </section>
+
+        <!-- Screen 2: Script -->
+        <section id="screen-script" class="screen">
+            <div class="script-container">
+                <p id="script-text" class="script-body"></p>
+                <button id="btn-done" class="btn-secondary">I've read this</button>
+            </div>
+        </section>
+
+        <!-- Screen 3: Micro Action -->
+        <section id="screen-action" class="screen">
+            <div class="action-container">
+                <p class="action-prompt">Would you like to try something small?</p>
+                <div class="action-card glass-panel">
+                    <p id="action-text" class="action-body"></p>
+                </div>
+                <div class="action-buttons">
+                    <button id="btn-try" class="btn-secondary">I'll try it</button>
+                    <button id="btn-skip" class="btn-ghost">Not tonight</button>
+                </div>
+            </div>
+        </section>
+
+        <!-- Screen 4: Log (Optional) -->
+        <section id="screen-log" class="screen">
+            <div class="log-container">
+                <p class="log-prompt">How are you feeling now?</p>
+                <div class="log-buttons">
+                    <button class="btn-log" data-feeling="better">Better</button>
+                    <button class="btn-log" data-feeling="same">Same</button>
+                    <button class="btn-log" data-feeling="worse">Worse</button>
+                </div>
+            </div>
+        </section>
+
+        <!-- Screen 5: Breathing (Rescue) -->
+        <section id="screen-breathe" class="screen">
+            <div class="breathe-container">
+                <p class="breathe-instruction">Breathe with the light.</p>
+                <div class="breathe-circle"></div>
+                <button id="btn-breathe-done" class="btn-ghost">I'm okay now</button>
+            </div>
+        </section>
+
+        <!-- Screen 6: End -->
+        <section id="screen-end" class="screen">
+            <div class="end-container">
+                <p class="end-message">You are safe.<br>Rest well.</p>
+            </div>
+        </section>
+    </div>
+
+    <script src="scripts.js"></script>
+</body>
+
+</html>

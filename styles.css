@@ -1,0 +1,428 @@
+/* ============================================
+   SAT - Sleep Anxiety Tracker
+   Dark, Warm, Minimal Design System
+   ============================================ */
+
+:root {
+    /* Colors - Dark & Warm */
+    --bg-primary: #0a0a0a;
+    --bg-secondary: #141414;
+    --bg-card: #1a1a1a;
+
+    --text-primary: #e8e0d5;
+    --text-secondary: #a89f94;
+    --text-muted: #6b6560;
+
+    --accent-warm: #d4a574;
+    --accent-glow: rgba(212, 165, 116, 0.15);
+
+    --border-subtle: rgba(255, 255, 255, 0.08);
+
+    /* Typography */
+    --font-body: 'Merriweather', Georgia, serif;
+    --font-ui: 'Inter', -apple-system, sans-serif;
+
+    /* Spacing */
+    --space-xs: 0.5rem;
+    --space-sm: 1rem;
+    --space-md: 1.5rem;
+    --space-lg: 2rem;
+    --space-xl: 3rem;
+
+    /* Animation */
+    --transition-slow: 600ms ease;
+    --transition-medium: 300ms ease;
+}
+
+/* Reset & Base */
+*,
+*::before,
+*::after {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+html {
+    font-size: 18px;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+
+body {
+    font-family: var(--font-body);
+    background-color: var(--bg-primary);
+    color: var(--text-primary);
+    min-height: 100vh;
+    min-height: 100dvh;
+    line-height: 1.7;
+    overflow: hidden;
+}
+
+#app {
+    width: 100%;
+    height: 100vh;
+    height: 100dvh;
+    position: relative;
+}
+
+/* Screen System */
+.screen {
+    position: absolute;
+    inset: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: var(--space-lg);
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity var(--transition-slow), visibility var(--transition-slow);
+}
+
+.screen.active {
+    opacity: 1;
+    visibility: visible;
+}
+
+/* ============================================
+   Screen 1: Home
+   ============================================ */
+.home-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    gap: var(--space-lg);
+}
+
+.whisper {
+    font-size: 0.9rem;
+    color: var(--text-muted);
+    font-style: italic;
+    letter-spacing: 0.02em;
+    animation: fadeIn 1s ease 0.5s both;
+}
+
+.btn-main {
+    font-family: var(--font-ui);
+    font-size: 1.1rem;
+    font-weight: 500;
+    color: var(--text-primary);
+    background: var(--bg-card);
+    border: 1px solid var(--border-subtle);
+    padding: var(--space-md) var(--space-xl);
+    border-radius: 50px;
+    cursor: pointer;
+    transition: all var(--transition-medium);
+    box-shadow:
+        0 0 30px var(--accent-glow),
+        inset 0 1px 0 rgba(255, 255, 255, 0.05);
+    animation: pulse 4s ease-in-out infinite;
+}
+
+.btn-main:hover,
+.btn-main:focus {
+    background: var(--bg-secondary);
+    border-color: var(--accent-warm);
+    transform: scale(1.02);
+    box-shadow:
+        0 0 50px var(--accent-glow),
+        0 0 80px rgba(212, 165, 116, 0.1);
+}
+
+.btn-main:active {
+    transform: scale(0.98);
+}
+
+.footer-text {
+    font-family: var(--font-ui);
+    font-size: 0.7rem;
+    color: var(--text-muted);
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+    animation: fadeIn 1s ease 1s both;
+}
+
+/* ============================================
+   Screen 2: Script
+   ============================================ */
+.script-container {
+    max-width: 600px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: var(--space-xl);
+}
+
+.script-body {
+    font-size: 1.25rem;
+    line-height: 1.9;
+    color: var(--text-primary);
+    text-align: center;
+    animation: fadeInUp 0.8s ease both;
+}
+
+.btn-secondary {
+    font-family: var(--font-ui);
+    font-size: 0.95rem;
+    font-weight: 400;
+    color: var(--text-secondary);
+    background: transparent;
+    border: 1px solid var(--border-subtle);
+    padding: var(--space-sm) var(--space-lg);
+    border-radius: 30px;
+    cursor: pointer;
+    transition: all var(--transition-medium);
+    animation: fadeIn 0.5s ease 0.5s both;
+}
+
+.btn-secondary:hover,
+.btn-secondary:focus {
+    color: var(--text-primary);
+    border-color: var(--accent-warm);
+    background: rgba(212, 165, 116, 0.08);
+}
+
+/* ============================================
+   Screen 3: Micro Action
+   ============================================ */
+.action-container {
+    max-width: 500px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: var(--space-lg);
+    text-align: center;
+}
+
+.action-prompt {
+    font-size: 1rem;
+    color: var(--text-secondary);
+    animation: fadeIn 0.6s ease both;
+}
+
+.action-card {
+    /* background: var(--bg-card); replaced by glass */
+    border-radius: 16px;
+    padding: var(--space-lg);
+    width: 100%;
+    animation: fadeInUp 0.6s ease 0.2s both;
+}
+
+.action-body {
+    font-size: 1.1rem;
+    color: var(--text-primary);
+    line-height: 1.6;
+}
+
+.action-buttons {
+    display: flex;
+    gap: var(--space-sm);
+    animation: fadeIn 0.5s ease 0.4s both;
+}
+
+.btn-ghost {
+    font-family: var(--font-ui);
+    font-size: 0.9rem;
+    color: var(--text-muted);
+    background: transparent;
+    border: none;
+    padding: var(--space-sm) var(--space-md);
+    cursor: pointer;
+    transition: color var(--transition-medium);
+}
+
+.btn-ghost:hover {
+    color: var(--text-secondary);
+}
+
+/* ============================================
+   Screen 4: Log
+   ============================================ */
+.log-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: var(--space-lg);
+    text-align: center;
+}
+
+.log-prompt {
+    font-size: 1.1rem;
+    color: var(--text-secondary);
+    animation: fadeIn 0.6s ease both;
+}
+
+.log-buttons {
+    display: flex;
+    gap: var(--space-sm);
+    flex-wrap: wrap;
+    justify-content: center;
+    animation: fadeInUp 0.6s ease 0.2s both;
+}
+
+.btn-log {
+    font-family: var(--font-ui);
+    font-size: 0.95rem;
+    color: var(--text-primary);
+    background: var(--bg-card);
+    border: 1px solid var(--border-subtle);
+    padding: var(--space-sm) var(--space-md);
+    border-radius: 12px;
+    cursor: pointer;
+    transition: all var(--transition-medium);
+    min-width: 90px;
+}
+
+.btn-log:hover {
+    border-color: var(--accent-warm);
+    background: rgba(212, 165, 116, 0.08);
+}
+
+/* ============================================
+   Screen 5: End
+   ============================================ */
+.end-container {
+    text-align: center;
+}
+
+.end-message {
+    font-size: 1.4rem;
+    line-height: 2;
+    color: var(--text-primary);
+    animation: fadeIn 1s ease both;
+}
+
+/* ============================================
+   Animations
+   ============================================ */
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+
+    to {
+        opacity: 1;
+    }
+}
+
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes pulse {
+
+    0%,
+    100% {
+        box-shadow:
+            0 0 30px var(--accent-glow),
+            inset 0 1px 0 rgba(255, 255, 255, 0.05);
+    }
+
+    50% {
+        box-shadow:
+            0 0 50px var(--accent-glow),
+            0 0 80px rgba(212, 165, 116, 0.08),
+            inset 0 1px 0 rgba(255, 255, 255, 0.05);
+    }
+}
+
+/* ============================================
+   Utilities
+   ============================================ */
+@media (max-width: 400px) {
+    html {
+        font-size: 16px;
+    }
+
+    .btn-main {
+        padding: var(--space-md) var(--space-lg);
+    }
+}
+
+/* Prevent text selection for buttons */
+button {
+    user-select: none;
+    -webkit-tap-highlight-color: transparent;
+}
+
+/* Focus visible for accessibility */
+button:focus-visible {
+    outline: 2px solid var(--accent-warm);
+    outline-offset: 2px;
+}
+
+/* ============================================
+   Rescue: Breathing Animation
+   ============================================ */
+.breathe-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: var(--space-xl);
+}
+
+.breathe-instruction {
+    color: var(--text-secondary);
+    font-size: 1rem;
+    animation: fadeIn 2s ease both;
+}
+
+.breathe-circle {
+    width: 120px;
+    height: 120px;
+    border-radius: 50%;
+    background: var(--accent-glow);
+    box-shadow: 0 0 40px var(--accent-glow);
+    animation: breathe 8s ease-in-out infinite;
+}
+
+@keyframes breathe {
+
+    0%,
+    100% {
+        transform: scale(1);
+        opacity: 0.3;
+        box-shadow: 0 0 20px var(--accent-glow);
+    }
+
+    50% {
+        transform: scale(2.5);
+        opacity: 0.8;
+        box-shadow: 0 0 80px rgba(212, 165, 116, 0.3);
+    }
+}
+
+/* Subtle Background Pulse */
+body::before {
+    content: '';
+    position: absolute;
+    top: -50%;
+    left: -50%;
+    width: 200%;
+    height: 200%;
+    background: radial-gradient(circle at center, rgba(30, 20, 10, 0.4) 0%, transparent 60%);
+    animation: slowPulse 15s ease-in-out infinite alternate;
+    z-index: -1;
+    pointer-events: none;
+}
+
+@keyframes slowPulse {
+    0% {
+        transform: scale(1);
+        opacity: 0.5;
+    }
+
+    100% {
+        transform: scale(1.1);
+        opacity: 0.8;
+    }
+}

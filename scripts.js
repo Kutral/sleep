@@ -38,7 +38,6 @@ const elements = {
     scriptText: document.getElementById('script-text'),
     actionText: document.getElementById('action-text'),
     // Rescue elements
-    rescueId: document.getElementById('rescue-id'),
     rescueTitle: document.getElementById('rescue-title'),
     rescueContent: document.getElementById('rescue-content'),
     btnRescueNext: document.getElementById('btn-rescue-next'),
@@ -205,7 +204,6 @@ let currentRescueIndex = 0;
 
 function showRescueMethod() {
     const method = RESCUE_METHODS[currentRescueIndex];
-    elements.rescueId.textContent = currentRescueIndex + 1;
     elements.rescueTitle.textContent = method.title;
     elements.rescueContent.innerHTML = method.text;
 

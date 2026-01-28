@@ -67,16 +67,35 @@
             </div>
         </section>
 
-        <!-- Screen 5: Breathing (Rescue) -->
+        <!-- Screen 5: Breathing (Box Breathing) -->
         <section id="screen-breathe" class="screen">
             <div class="breathe-container">
-                <p class="breathe-instruction">Breathe with the light.</p>
-                <div class="breathe-circle"></div>
-                <button id="btn-breathe-done" class="btn-ghost">I'm okay now</button>
+                <p id="breathe-text" class="breathe-instruction">Prepare to breathe...</p>
+                <div class="box-breathing">
+                    <div class="box-dot"></div>
+                </div>
+                <!-- Box visualization (CSS handled) -->
+
+                <div class="breathe-buttons">
+                    <button id="btn-breathe-done" class="btn-ghost">I'm calmer</button>
+                    <button id="btn-breathe-fail" class="btn-text-danger">Still not well</button>
+                </div>
             </div>
         </section>
 
-        <!-- Screen 6: End -->
+        <!-- Screen 6: Distraction (Fallback) -->
+        <section id="screen-distraction" class="screen">
+            <div class="distraction-container glass-panel">
+                <p class="distraction-title">Let's switch channels.</p>
+                <p class="distraction-body">
+                    Count backwards from 100 by 7s.<br><br>
+                    <span style="color: var(--text-secondary); font-size: 0.9em;">100... 93... 86...</span>
+                </p>
+                <button id="btn-distraction-done" class="btn-main">Okay, I'm tired now</button>
+            </div>
+        </section>
+
+        <!-- Screen 7: End -->
         <section id="screen-end" class="screen">
             <div class="end-container">
                 <p class="end-message">You are safe.<br>Rest well.</p>

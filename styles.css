@@ -361,44 +361,116 @@ button:focus-visible {
 }
 
 /* ============================================
-   Rescue: Breathing Animation
+   Rescue: Box Breathing (4-4-4-4)
    ============================================ */
 .breathe-container {
     display: flex;
     flex-direction: column;
     align-items: center;
     gap: var(--space-xl);
+    width: 100%;
 }
 
-.breathe-instruction {
-    color: var(--text-secondary);
-    font-size: 1rem;
-    animation: fadeIn 2s ease both;
+.box-breathing {
+    width: 200px;
+    height: 200px;
+    border: 2px solid rgba(255, 255, 255, 0.1);
+    border-radius: 12px;
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: rgba(255, 255, 255, 0.02);
 }
 
-.breathe-circle {
-    width: 120px;
-    height: 120px;
+/* The moving dot */
+.box-dot {
+    width: 20px;
+    height: 20px;
+    background: var(--accent-warm);
     border-radius: 50%;
-    background: var(--accent-glow);
-    box-shadow: 0 0 40px var(--accent-glow);
-    animation: breathe 8s ease-in-out infinite;
+    position: absolute;
+    box-shadow: 0 0 20px var(--accent-warm);
+    /* 4s * 4 sides = 16s total loop */
+    animation: boxPath 16s linear infinite;
 }
 
-@keyframes breathe {
-
-    0%,
-    100% {
-        transform: scale(1);
-        opacity: 0.3;
-        box-shadow: 0 0 20px var(--accent-glow);
+@keyframes boxPath {
+    0% {
+        top: -10px;
+        left: -10px;
     }
 
+    /* Start Top-Left */
+    25% {
+        top: -10px;
+        left: 190px;
+    }
+
+    /* Move Right (Inhale) */
     50% {
-        transform: scale(2.5);
-        opacity: 0.8;
-        box-shadow: 0 0 80px rgba(212, 165, 116, 0.3);
+        top: 190px;
+        left: 190px;
     }
+
+    /* Move Down (Hold) */
+    75% {
+        top: 190px;
+        left: -10px;
+    }
+
+    /* Move Left (Exhale) */
+    100% {
+        top: -10px;
+        left: -10px;
+    }
+
+    /* Move Up (Hold) */
+}
+
+.breathe-buttons {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-md);
+    align-items: center;
+}
+
+.btn-text-danger {
+    background: none;
+    border: none;
+    color: #ff6b6b;
+    /* Soft red */
+    font-family: var(--font-ui);
+    font-size: 0.9rem;
+    cursor: pointer;
+    opacity: 0.7;
+    transition: opacity 0.3s;
+}
+
+.btn-text-danger:hover {
+    opacity: 1;
+}
+
+/* ============================================
+   Distraction Screen
+   ============================================ */
+.distraction-container {
+    max-width: 400px;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-lg);
+}
+
+.distraction-title {
+    font-size: 1.2rem;
+    color: var(--accent-warm);
+}
+
+.distraction-body {
+    font-size: 1.4rem;
+    line-height: 1.6;
+    color: var(--text-primary);
 }
 
 /* Subtle Background Pulse */

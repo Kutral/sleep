@@ -2,7 +2,9 @@
 
 > *Break the 2 AM anxiety loop. A gentle companion for sleepless nights.*
 
-![SAT App Preview](icons/icon-512.png)
+<p align="center">
+  <img src="icons/icon-512.png" width="120" alt="SAT App Icon" style="border-radius: 24px; box-shadow: 0 10px 30px rgba(0,0,0,0.5);">
+</p>
 
 SAT (Sleep Anxiety Tracker) is a **minimalist Progressive Web App (PWA)** designed for one specific moment: **Panic at 2 AM.**
 
@@ -12,17 +14,28 @@ It helps users who are awake, anxious, and spiraling about not sleeping. It is *
 
 ## ✨ Features
 
-*   **🌑 Panic Interruption Engine:** randomly selects one of 10 reassuring, cognitive-reframing scripts to break the anxiety loop.
-*   **🌬️ Rescue Breathing Flow:** A gentle, animated breathing guide (4s inhale, 6s exhale) if you feel "Worse" or "Same".
-*   **🌫️ Glassmorphism UI:** Premium, frosted-glass aesthetics with a calming dark/warm theme.
-*   **⌨️ Typewriter Effect:** Scripts reveal slowly to force a reduction in reading speed and racing thoughts.
-*   **📳 Haptic Grounding:** Subtle vibrations on interaction to help ground you in reality.
-*   **🔋 Offline First:** Works 100% offline via Service Worker.
-*   **🚫 Zero Friction:** No login, no onboarding, no notifications, no scores.
+### 🌑 Panic Interruption Engine
+Randomly selects one of 10 reassuring, cognitive-reframing scripts to immediately break the anxiety loop.
+
+### 🫁 Visual Box Breathing
+A calming, animated guide utilizing the **4-4-4-4 Navy SEAL technique** (Inhale, Hold, Exhale, Hold) to physically regulate your nervous system.
+
+### 🌫️ Glassmorphism Design
+Premium, frosted-glass aesthetics with a calming dark/warm theme designed to be gentle on tired eyes.
+
+### 🧠 Cognitive Distraction
+If breathing fails, the app deploys a "Fall-back Protocol" (counting backwards) to force the brain from Amygdala (Panic) to Prefrontal Cortex (Logic).
+
+### ⚡ Premium Feel
+*   **Typewriter Effect:** Scripts reveal slowly to force slower reading.
+*   **Haptic Grounding:** Subtle vibrations on interaction.
+*   **Offline First:** Works 100% offline via Service Worker V4.
+
+---
 
 ## 🚀 How to Use
 
-1.  **Open the App:** [Click here to view live](https://kutral.github.io/sleep/) *(Link active after deployment)*.
+1.  **Open the App:** [Click here to use SAT](https://kutral.github.io/sleep/)
 2.  **Add to Home Screen:**
     *   **iOS:** Share -> Add to Home Screen.
     *   **Android:** Three dots -> Add to Home Screen (or Install App).
@@ -32,7 +45,7 @@ It helps users who are awake, anxious, and spiraling about not sleeping. It is *
 ## 🛠️ Tech Stack
 
 *   **Core:** Vanilla HTML5, CSS3, JavaScript (ES6+).
-*   **PWA:** `manifest.json`, `sw.js` (Service Worker V3).
+*   **PWA:** `manifest.json`, `sw.js` (Service Worker V4).
 *   **Design:** CSS Variables, Glassmorphism, CSS Animations.
 *   **Storage:** `localStorage` for privacy-first, on-device logging.
 
@@ -47,16 +60,6 @@ It helps users who are awake, anxious, and spiraling about not sleeping. It is *
     npx serve .
     ```
 3.  Open `http://localhost:3000`.
-
-## 🤝 Contributing
-
-This is a solo indie project built for impact, not profit. Suggestions are welcome!
-
-1.  Fork the Project
-2.  Create your Feature Branch (`git checkout -b feature/AmazingFeature`)
-3.  Commit your Changes (`git commit -m 'Add some AmazingFeature'`)
-4.  Push to the Branch (`git push origin feature/AmazingFeature`)
-5.  Open a Pull Request
 
 ---
 

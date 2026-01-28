@@ -81,6 +81,7 @@ const screens = {
     action: document.getElementById('screen-action'),
     log: document.getElementById('screen-log'),
     breathe: document.getElementById('screen-breathe'),
+    distraction: document.getElementById('screen-distraction'),
     end: document.getElementById('screen-end')
 };
 
@@ -90,14 +91,90 @@ const elements = {
     btnTry: document.getElementById('btn-try'),
     btnSkip: document.getElementById('btn-skip'),
     btnBreatheDone: document.getElementById('btn-breathe-done'),
+    btnBreatheFail: document.getElementById('btn-breathe-fail'),
+    btnDistractionDone: document.getElementById('btn-distraction-done'),
     scriptText: document.getElementById('script-text'),
     actionText: document.getElementById('action-text'),
+    breatheText: document.getElementById('breathe-text'),
     logButtons: document.querySelectorAll('.btn-log')
 };
 
+// ... [Screen Navigation / Random Logic] ...
+
 // ============================================
-// SCREEN NAVIGATION
+// BOX BREATHING LOGIC
 // ============================================
+let breathingInterval;
+
+function startBoxBreathing() {
+    clearInterval(breathingInterval);
+    const textEl = elements.breatheText;
+
+    // Cycle: Inhale (4s) -> Hold (4s) -> Exhale (4s) -> Hold (4s)
+    let phase = 0; // 0=In, 1=Hold, 2=Out, 3=Hold
+
+    const updateText = () => {
+        switch (phase) {
+            case 0: textEl.textContent = "Inhale..."; break;
+            case 1: textEl.textContent = "Hold..."; break;
+            case 2: textEl.textContent = "Exhale..."; break;
+            case 3: textEl.textContent = "Hold..."; break;
+        }
+        phase = (phase + 1) % 4;
+    };
+
+    updateText(); // Initial
+    breathingInterval = setInterval(updateText, 4000); // Update every 4s
+}
+
+function stopBoxBreathing() {
+    clearInterval(breathingInterval);
+}
+
+// ============================================
+// EVENT HANDLERS
+// ============================================
+function initEventListeners() {
+    // ... [Previous handlers] ...
+
+    // Log -> Logic
+    elements.logButtons.forEach(btn => {
+        btn.addEventListener('click', () => {
+            const feeling = btn.dataset.feeling;
+            logSession(feeling);
+
+            if (feeling === 'better') {
+                showScreen('end');
+                setTimeout(() => showScreen('home'), 5000);
+            } else {
+                showScreen('breathe');
+                startBoxBreathing();
+            }
+        });
+    });
+
+    // Breathe -> Done
+    elements.btnBreatheDone.addEventListener('click', () => {
+        vibrate(50);
+        stopBoxBreathing();
+        showScreen('end');
+        setTimeout(() => showScreen('home'), 5000);
+    });
+
+    // Breathe -> Fail (Still not well)
+    elements.btnBreatheFail.addEventListener('click', () => {
+        vibrate(50);
+        stopBoxBreathing();
+        showScreen('distraction');
+    });
+
+    // Distraction -> Done
+    elements.btnDistractionDone.addEventListener('click', () => {
+        vibrate(50);
+        showScreen('end');
+        setTimeout(() => showScreen('home'), 5000);
+    });
+}
 function showScreen(screenName) {
     // Hide all screens
     Object.values(screens).forEach(screen => {

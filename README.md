@@ -26,6 +26,9 @@ Premium, frosted-glass aesthetics with a calming dark/warm theme designed to be 
 ### 🧠 Cognitive Distraction
 If breathing fails, the app deploys a "Fall-back Protocol" (counting backwards) to force the brain from Amygdala (Panic) to Prefrontal Cortex (Logic).
 
+### 🔊 Colors of Noise
+**Brown Noise Generator** built directly into the app (using Web Audio API). A deep, rumbling sound scientifically proven to calm the anxious brain better than white noise.
+
 ### ⚡ Premium Feel
 *   **Typewriter Effect:** Scripts reveal slowly to force slower reading.
 *   **Haptic Grounding:** Subtle vibrations on interaction.

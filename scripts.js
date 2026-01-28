@@ -290,9 +290,93 @@ function unlockPremium() {
 }
 
 // ============================================
+// AUDIO ENGINE (Brown Noise)
+// ============================================
+let audioCtx;
+let noiseSource;
+let noiseGain;
+let isPlaying = false;
+
+function toggleNoise() {
+    // Resume context if suspended (browser autoplay policy)
+    if (audioCtx && audioCtx.state === 'suspended') {
+        audioCtx.resume();
+    }
+
+    if (!audioCtx) {
+        // Init Audio Context
+        const AudioContext = window.AudioContext || window.webkitAudioContext;
+        audioCtx = new AudioContext();
+
+        // Create Brown Noise Buffer
+        const bufferSize = audioCtx.sampleRate * 2; // 2 seconds loop
+        const buffer = audioCtx.createBuffer(1, bufferSize, audioCtx.sampleRate);
+        const data = buffer.getChannelData(0);
+
+        let lastOut = 0;
+        for (let i = 0; i < bufferSize; i++) {
+            const white = Math.random() * 2 - 1;
+            // Brown noise integration algorithm
+            data[i] = (lastOut + (0.02 * white)) / 1.02;
+            lastOut = data[i];
+            data[i] *= 3.5; // Compensate for gain loss
+        }
+
+        noiseSource = audioCtx.createBufferSource();
+        noiseSource.buffer = buffer;
+        noiseSource.loop = true;
+
+        noiseGain = audioCtx.createGain();
+        noiseGain.gain.value = 0.4; // Volume
+
+        // Ramp up volume
+        noiseGain.gain.setValueAtTime(0, audioCtx.currentTime);
+        noiseGain.gain.linearRampToValueAtTime(0.4, audioCtx.currentTime + 2);
+
+        noiseSource.connect(noiseGain);
+        noiseGain.connect(audioCtx.destination);
+        noiseSource.start();
+
+        isPlaying = true;
+    } else {
+        if (isPlaying) {
+            // Ramp down
+            noiseGain.gain.linearRampToValueAtTime(0, audioCtx.currentTime + 0.5);
+            setTimeout(() => audioCtx.suspend(), 500);
+            isPlaying = false;
+        } else {
+            audioCtx.resume();
+            // Ramp up
+            noiseGain.gain.setValueAtTime(0, audioCtx.currentTime);
+            noiseGain.gain.linearRampToValueAtTime(0.4, audioCtx.currentTime + 1);
+            isPlaying = true;
+        }
+    }
+
+    updateNoiseIcon();
+}
+
+function updateNoiseIcon() {
+    const btn = document.getElementById('btn-noise');
+    if (isPlaying) {
+        btn.textContent = '🔊';
+        btn.classList.add('active');
+    } else {
+        btn.textContent = '🔇';
+        btn.classList.remove('active');
+    }
+}
+
+// ============================================
 // EVENT HANDLERS
 // ============================================
 function initEventListeners() {
+    // Noise Toggle
+    document.getElementById('btn-noise').addEventListener('click', () => {
+        vibrate(20);
+        toggleNoise();
+    });
+
     // Home -> Script
     elements.btnAnxious.addEventListener('click', () => {
         vibrate(50);

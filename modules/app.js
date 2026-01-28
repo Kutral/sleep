@@ -101,9 +101,9 @@ const App = {
 
     triggerRandomRescue() {
         // Logic to pick unique random rescue method
-        if (typeof RESCUE_METHODS === 'undefined') return;
+        const method = StateManager.getRandomRescueMethod();
+        if (!method) return;
 
-        const method = RESCUE_METHODS[Math.floor(Math.random() * RESCUE_METHODS.length)]; // Simple random for now
         UIManager.showScreen('rescue');
         TechniqueManager.startRescue(method);
     }

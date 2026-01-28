@@ -33,6 +33,25 @@ const StateManager = {
         const script = available[Math.floor(Math.random() * available.length)];
         this.data.usedScriptIds.push(script && script.id);
         return script || SCRIPTS[0];
+        return script || SCRIPTS[0];
+    },
+
+    getRandomRescueMethod() {
+        if (typeof RESCUE_METHODS === 'undefined') return null;
+        if (!this.data.usedRescueIndices) this.data.usedRescueIndices = []; // Ensure init
+
+        if (this.data.usedRescueIndices.length >= RESCUE_METHODS.length) {
+            this.data.usedRescueIndices = [];
+        }
+
+        // Filter valid indices
+        const availableIndices = RESCUE_METHODS.map((_, i) => i)
+            .filter(i => !this.data.usedRescueIndices.includes(i));
+
+        const randomIndex = availableIndices[Math.floor(Math.random() * availableIndices.length)];
+        this.data.usedRescueIndices.push(randomIndex);
+
+        return RESCUE_METHODS[randomIndex];
     },
 
     logSession(feeling) {

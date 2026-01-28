@@ -42,7 +42,16 @@ const MICRO_ACTIONS = [
     "Lie still and rest your eyes. No pressure.",
     "Get a glass of water, then return to bed.",
     "Stretch your arms above your head, then relax.",
-    "Listen to the silence around you."
+    "Listen to the silence around you.",
+    "Wiggle your toes for 10 seconds.",
+    "Visualize a candle flame flickering.",
+    "Count backwards from 300 by 3s.",
+    "Imagine your body is made of heavy sand.",
+    "Touch your thumb to each finger, one by one.",
+    "Recall the smell of rain.",
+    "Scan your body for tension and let it drop.",
+    "Imagine a color you love filling the room.",
+    "Say 'I accept this moment' silently."
 ];
 
 // ============================================

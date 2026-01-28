@@ -144,57 +144,77 @@ function updateNoiseIcon() {
 }
 
 // ============================================
-// BOX BREATHING LOGIC
+// BOX BREATHING LOGIC (Modular)
 // ============================================
-let breathingInterval;
-
 function startBoxBreathing() {
-    clearInterval(breathingInterval);
-    let phase = 0; // 0=Top, 1=Right, 2=Bottom, 3=Left
-
-    // Labels array matching phases
-    const updateLabels = () => {
-        const labels = [
-            document.querySelector('.label-top'),
-            document.querySelector('.label-right'),
-            document.querySelector('.label-bottom'),
-            document.querySelector('.label-left')
-        ];
-
-        labels.forEach((el, index) => {
-            if (index === phase) {
-                el.classList.add('active');
-                vibrate(20);
-            } else {
-                el.classList.remove('active');
-            }
-        });
-        phase = (phase + 1) % 4;
-    };
-
-    updateLabels();
-    breathingInterval = setInterval(updateLabels, 4000);
+    BoxBreathing.start();
 }
 
 function stopBoxBreathing() {
-    clearInterval(breathingInterval);
+    BoxBreathing.stop();
 }
 
 // ============================================
 // LOGIC HANDLERS
 // ============================================
-let currentRescueIndex = 0;
+// Randomizer State
+let usedRescueIndices = [];
+
+function getRandomRescueIndex() {
+    if (usedRescueIndices.length >= RESCUE_METHODS.length) {
+        usedRescueIndices = [];
+    }
+
+    // Pick specific valid index
+    let available = [];
+    RESCUE_METHODS.forEach((_, index) => {
+        if (!usedRescueIndices.includes(index)) available.push(index);
+    });
+
+    const randomIndex = available[Math.floor(Math.random() * available.length)];
+    usedRescueIndices.push(randomIndex);
+    return randomIndex;
+}
+
+let currentRescueIndex = 0; // Keeping for reference if needed, but driven by random now
+
 
 function showRescueMethod() {
+    // Stop any active visualizers first
+    Breath478.stop();
+
     const method = RESCUE_METHODS[currentRescueIndex];
     elements.rescueTitle.textContent = method.title;
     elements.rescueContent.innerHTML = method.text;
 
+    // Special Handling for Interactive Modules
+    if (method.title === "4-7-8 Breathing") {
+        document.getElementById('rescue-content').style.display = 'none'; // Hide text if visualizer is better? Or keep both?
+        // Let's keep text for instruction, add button to "Start Guide"? 
+        // For now, auto-start visualizer for seamlessness as requested ("interactive animations")
+        Breath478.start();
+    } else {
+        document.getElementById('rescue-content').style.display = 'block';
+    }
+
     showScreen('rescue');
-    currentRescueIndex = (currentRescueIndex + 1) % RESCUE_METHODS.length;
+    showScreen('rescue');
+    // Prepare next random index for when "Try Something Else" is clicked next time
+    // Actually, we should just generate it on demand when button clicked. 
+    // Logic moved to start of function or call.
+}
+
+// Wrapper to handle random call
+function triggerRescueMethod() {
+    currentRescueIndex = getRandomRescueIndex();
+    showRescueMethod();
 }
 
 function showScreen(screenName) {
+    // Stop all techniques when leaving screens
+    stopBoxBreathing();
+    if (typeof Breath478 !== 'undefined') Breath478.stop();
+
     Object.values(screens).forEach(screen => {
         if (screen) screen.classList.remove('active');
     });
@@ -376,13 +396,13 @@ function initEventListeners() {
     elements.btnBreatheFail.addEventListener('click', () => {
         vibrate(50);
         stopBoxBreathing();
-        showRescueMethod(); // Go to Rescue Toolkit
+        triggerRescueMethod(); // Go to Randomized Rescue Toolkit
     });
 
     // 5. Rescue Toolkit Flow
     elements.btnRescueNext.addEventListener('click', () => {
         vibrate(50);
-        showRescueMethod();
+        triggerRescueMethod();
     });
 
     elements.btnRescueDone.addEventListener('click', () => {

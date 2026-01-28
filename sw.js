@@ -3,7 +3,7 @@
    Offline-First Caching Strategy
    ============================================ */
 
-const CACHE_NAME = 'sat-v13';
+const CACHE_NAME = 'sat-v14';
 
 const ASSETS_TO_CACHE = [
     '/',

@@ -305,10 +305,25 @@
 }
 
 /* Sound Controls */
+.sound-controls-wrapper {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    gap: 0.2rem;
+    margin-top: 1rem;
+}
+
+.sound-label {
+    font-size: 0.7rem;
+    color: var(--text-muted);
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    padding-right: 0.2rem;
+}
+
 .sound-controls {
     display: flex;
     gap: 0.5rem;
-    margin-top: 1rem;
 }
 
 .btn-sound {

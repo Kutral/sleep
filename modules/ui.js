@@ -8,7 +8,7 @@ const UIManager = {
 
     init() {
         // Cache Screens
-        ['home', 'script', 'action', 'log', 'breathe', 'rescue', 'permission', 'end'].forEach(id => {
+        ['home', 'script', 'action', 'log', 'breathe', 'rescue', 'permission', 'end', 'journal'].forEach(id => {
             this.screens[id] = document.getElementById(`screen-${id}`);
         });
 

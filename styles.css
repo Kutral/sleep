@@ -143,6 +143,17 @@ body {
     animation: fadeIn 1s ease 1s both;
 }
 
+.trust-signal {
+    font-family: var(--font-ui);
+    font-size: 0.65rem;
+    color: var(--text-muted);
+    letter-spacing: 0.1em;
+    font-weight: 500;
+    opacity: 0.6;
+    margin-top: var(--space-md);
+    animation: fadeIn 1s ease 0.8s both;
+}
+
 .btn-icon {
     background: rgba(0, 0, 0, 0.3);
     backdrop-filter: blur(4px);

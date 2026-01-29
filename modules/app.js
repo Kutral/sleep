@@ -11,6 +11,7 @@ const App = {
         // New Feature Init
         if (window.HypnoticCanvas) HypnoticCanvas.init();
         if (window.SoundscapePlus) SoundscapePlus.init();
+        if (window.SleepJournal) SleepJournal.init();
 
         // Service Worker
         if ('serviceWorker' in navigator) {
@@ -146,6 +147,51 @@ const App = {
                 });
             }
         });
+
+        // Journal Events
+        const btnJournal = document.getElementById('btn-journal');
+        if (btnJournal) {
+            btnJournal.addEventListener('click', () => {
+                AudioManager.vibrate(20);
+                UIManager.showScreen('journal');
+                if (window.SleepJournal) {
+                    const savedText = SleepJournal.load();
+                    const input = document.getElementById('journal-input');
+                    if (input) input.value = savedText;
+                }
+            });
+        }
+
+        const btnJournalSave = document.getElementById('btn-journal-save');
+        if (btnJournalSave) {
+            btnJournalSave.addEventListener('click', () => {
+                AudioManager.vibrate(50);
+                const input = document.getElementById('journal-input');
+                if (input && window.SleepJournal) {
+                    SleepJournal.save(input.value);
+                }
+                // Reuse the 'permission' screen flow or go to end
+                UIManager.showScreen('permission');
+            });
+        }
+
+        const btnJournalClear = document.getElementById('btn-journal-clear');
+        if (btnJournalClear) {
+            btnJournalClear.addEventListener('click', () => {
+                AudioManager.vibrate(20);
+                const input = document.getElementById('journal-input');
+                if (input) input.value = '';
+                if (window.SleepJournal) SleepJournal.clear();
+            });
+        }
+
+        const btnJournalBack = document.getElementById('btn-journal-back');
+        if (btnJournalBack) {
+            btnJournalBack.addEventListener('click', () => {
+                AudioManager.vibrate(20);
+                UIManager.showScreen('home');
+            });
+        }
 
         // Fade to Black Timer Init
         this.startInactivityTimer();

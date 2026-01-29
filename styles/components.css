@@ -142,3 +142,31 @@
     backdrop-filter: blur(10px);
     box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
 }
+
+/* Moon Animation */
+@keyframes float-moon {
+
+    0%,
+    100% {
+        transform: translateY(0);
+    }
+
+    50% {
+        transform: translateY(-8px);
+    }
+}
+
+#btn-twilight {
+    animation: float-moon 6s ease-in-out infinite;
+    font-size: 1.4rem;
+    /* Slightly larger for better visual */
+}
+
+#btn-twilight:hover {
+    transform: rotate(15deg) scale(1.1);
+    animation-play-state: paused;
+    color: #ffd700;
+    /* Gold color on hover */
+    text-shadow: 0 0 10px rgba(255, 215, 0, 0.5);
+    border-color: rgba(255, 215, 0, 0.5);
+}

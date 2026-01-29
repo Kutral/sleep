@@ -44,6 +44,9 @@
                 <div class="global-controls"
                     style="position: absolute; top: 20px; right: 20px; display: flex; flex-direction: column; gap: 10px; align-items: flex-end;">
                     <div style="display: flex; gap: 10px;">
+                        <button id="btn-journal" class="btn-icon" aria-label="Open Journal">
+                            📓
+                        </button>
                         <button id="btn-twilight" class="btn-icon" aria-label="Toggle Twilight Mode">
                             🌙
                         </button>
@@ -51,19 +54,23 @@
                             🔇
                         </button>
                     </div>
-                    <div class="sound-controls" id="sound-controls">
-                        <button class="btn-sound" data-sound="rain">🌧️ Rain</button>
-                        <button class="btn-sound" data-sound="fire">🔥 Fire</button>
-                        <button class="btn-sound" data-sound="thunder">⛈️ Thunder</button>
+                    <div class="sound-controls-wrapper">
+                        <p class="sound-label">Soundscapes</p>
+                        <div class="sound-controls" id="sound-controls">
+                            <button class="btn-sound" data-sound="rain">🌧️ Rain</button>
+                            <button class="btn-sound" data-sound="fire">🔥 Fire</button>
+                            <button class="btn-sound" data-sound="thunder">⛈️ Thunder</button>
+                        </div>
                     </div>
-                </div>
 
-                <p class="footer-text">
-                    <a href="about.html" style="color: inherit; text-decoration: none;">About</a> •
-                    <a href="privacy.html" style="color: inherit; text-decoration: none;">Privacy</a> •
-                    <a href="contact.html" style="color: inherit; text-decoration: none;">Contact</a>
-                </p>
-            </div>
+                    <p class="trust-signal">OFFLINE READY • NO TRACKING • NO SIGNUP</p>
+
+                    <p class="footer-text">
+                        <a href="about.html" style="color: inherit; text-decoration: none;">About</a> •
+                        <a href="privacy.html" style="color: inherit; text-decoration: none;">Privacy</a> •
+                        <a href="contact.html" style="color: inherit; text-decoration: none;">Contact</a>
+                    </p>
+                </div>
         </section>
 
         <!-- Screen 2: Script -->
@@ -156,6 +163,20 @@
             </div>
         </section>
 
+        <!-- Screen 9: Journal (Experimental) -->
+        <section id="screen-journal" class="screen">
+            <div class="journal-container glass-panel">
+                <h2 class="journal-title">Night Thoughts</h2>
+                <p class="journal-subtitle">No guilt. No syncing. Just dump your mind here.</p>
+                <textarea id="journal-input" class="journal-input" placeholder="What's on your mind?"></textarea>
+                <div class="journal-buttons">
+                    <button id="btn-journal-save" class="btn-main">Save & Close</button>
+                    <button id="btn-journal-clear" class="btn-ghost">Clear</button>
+                    <button id="btn-journal-back" class="btn-ghost">Back</button>
+                </div>
+            </div>
+        </section>
+
         <!-- Screen 8: Permission (After Better) -->
         <section id="screen-permission" class="screen">
             <div class="permission-container glass-panel">
@@ -187,6 +208,7 @@
     <script src="techniques/worryBurner.js"></script>
 
     <!-- Modules -->
+    <script src="modules/sleepJournal.js"></script>
     <script src="modules/state.js"></script>
     <script src="modules/audio.js"></script>
     <script src="modules/canvas.js"></script>

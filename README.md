@@ -9,15 +9,15 @@
 <p align="center">
   <a href="https://kutral.github.io/sleep/"><strong>Launch App</strong></a> · 
   <a href="#-features">Features</a> · 
-  <a href="#-sleep-engineering">The Science</a> · 
-  <a href="#-installation-pwa">Install</a>
+  <a href="#-the-science">The Science</a> · 
+  <a href="#-installation">Install</a>
 </p>
 
 ---
 
 ## 🌌 What is SAT?
 
-SAT is not a sleep tracker. It is not a meditation app. It is a **Panic Interrupter**.
+SAT (Sleep Anxiety Tracker) is **not** a sleep tracker. It is **not** a meditation app. It is a **Panic Interrupter**.
 
 Designed specifically for the moment you wake up at 2 AM with a racing heart, SAT uses cognitive science to hijack your brain's "fight or flight" response and gently steer it back to safety.
 
@@ -25,43 +25,45 @@ Designed specifically for the moment you wake up at 2 AM with a racing heart, SA
 
 ---
 
-## ✨ Advanced Sleep Engineering
+## ✨ Features
 
 ### 🔥 The Worry Burner
-Externalize your anxiety. Type out the thought that is haunting you, and watch it visually burn away into ash particles. A powerful psychological release mechanism.
-
-### 🌑 Hypnotic Canvas
-Drift away with our generative "Deep Sea" background. Slow, mathematical particle movements designed to induce visual trance and lower brainwave frequency.
-
-### 🫁 Interactive Breathwork
-*   **Box Breathing (4-4-4-4):** The Navy SEAL technique for immediate panic reduction.
-*   **4-7-8 Breathing:** A natural nervous system tranquilizer that acts like a sedative.
-
-### 🕯️ Candle Mediation
-A 3D-simulated candle flame that responds to your presence. Focus on the flicker to narrow your attention and ground yourself in the present.
+Externalize your anxiety. Type out the thought that is haunting you, and watch it visually burn away into digital ash particles using our custom particle engine. A powerful psychological release mechanism.
 
 ### 🔊 Generative Soundscapes
-Bypass silence with our expanded audio engine:
+Bypass silence with our advanced Web Audio API engine. Unlike recorded loops, these sounds are generated in real-time:
 *   **Brown Noise:** Deep, rumble-frequency noise to mask thoughts.
-*   **Heavy Rain:** Consistent, high-fidelity nature loops.
-*   **Crackling Fire:** Warm, primal comfort sound.
-*   **Thunder:** Distant rolling storms for cozy safety.
+*   **Heavy Rain:** Pink noise-based generative rain.
+*   **Crackling Fire:** Warm, erratic popping sounds.
+*   **Thunder:** Low-frequency rumbles.
+
+### 🫁 Breathwork & Grounding
+*   **Box Breathing:** The 4-4-4-4 Navy SEAL technique for immediate panic reduction.
+*   **4-7-8 Breathing:** A natural nervous system tranquilizer.
+*   **Rescue Toolkit:** A collection of 10 scientifically proven methods (Cognitive Shuffling, Physiological Sigh, Paradoxical Intention, etc.) to reset your state.
+
+### 🕯️ Visual Aids
+*   **Hypnotic Canvas:** A background of slow, mathematical particle movements designed to induce visual trance.
+*   **Candle Flicker:** A simulated flame to focus your attention and ground you in the present.
+
+### 🌗 Twilight Mode
+A toggleable ultra-dark mode that reduces screen brightness and contrast even further to protect your light-sensitive eyes at night.
 
 ---
 
-## 📱 Mobile & PWA
-SAT is a fully optimized **Progressive Web App**. It feels native on every device.
+## 🧪 The Science
 
-*   **iOS/Android Optimized:** Full support for notches, safe areas, and touch gestures.
-*   **Haptic Feedback:** Subtle vibrations ground you physically in reality.
-*   **Fade to Black:** If you drift off, the screen automatically dims to 10% brightness after 5 minutes to protect your sleep.
-*   **Offline First:** Works perfectly without an internet connection.
+SAT is built on three pillars of cognitive behavioral therapy for insomnia (CBT-I):
+
+1.  **Cognitive Distraction:** Tools like the *Worry Burner* and *Random Scripts* break the "rumination loop" where the brain replays the same anxious thought.
+2.  **Physiological Regulation:** *Box Breathing* and *Brown Noise* directly stimulate the Vagus nerve, physically lowering heart rate.
+3.  **Paradoxical Intention:** The app encourages you to "stop trying to sleep" and instead focus on "resting," removing the performance anxiety that keeps you awake.
 
 ---
 
-## 🚀 How to Install
+## 📱 Installation (PWA)
 
-SAT lives in your browser but acts like an app.
+SAT is a **Progressive Web App (PWA)**. It lives in your browser but behaves like a native app.
 
 ### iOS (Safari)
 1.  Open [sat-sleep.web.app](https://kutral.github.io/sleep/)
@@ -75,15 +77,43 @@ SAT lives in your browser but acts like an app.
 
 ---
 
-## 🛠️ The Tech Stack
+## 🛠️ Tech Stack
 
-Built with a philosophy of "Digital Minimalism".
+Built with a philosophy of "Digital Minimalism". No frameworks, no bloat.
 
 *   **Core:** Vanilla HTML5, CSS3, JavaScript (ES6+).
-*   **Audio:** Web Audio API for real-time generative sound.
-*   **Graphics:** HTML5 Canvas for high-performance particle systems.
-*   **Storage:** `localStorage` for privacy (Your data never leaves your phone).
-*   **PWA:** Service Worker v24 for instant loading and offline capability.
+*   **Audio:** Web Audio API (`AudioContext`) for real-time generative sound.
+*   **Graphics:** HTML5 Canvas API for high-performance particle systems.
+*   **Storage:** `localStorage` for privacy (Your data never leaves your device).
+*   **PWA:** Service Worker (`sw.js`) for instant loading and full offline capability.
+
+### Project Structure
+```
+SAT/
+├── data.js                # Content (scripts, prompts, facts)
+├── modules/               # Core Logic
+│   ├── app.js             # Main controller
+│   ├── audio.js           # Basic audio engine
+│   ├── soundscapePlus.js  # Advanced nature sounds
+│   ├── state.js           # State management
+│   ├── ui.js              # UI manipulation
+│   └── techniqueManager.js # Orchestrates breathing/rescue tools
+├── techniques/            # Feature Implementations
+│   ├── worryBurner.js     # Canvas particle fire effect
+│   ├── boxBreathing.js    # 4-4-4-4 visualizer
+│   └── ...
+├── styles/                # CSS Modules
+└── icons/                 # PWA Icons
+```
+
+---
+
+## 📄 Privacy & Ads
+
+SAT respects your privacy.
+*   **No User Accounts:** No sign-up required.
+*   **Local Storage:** All logs and settings are stored locally on your device.
+*   **Ads:** We display non-intrusive ads to support development. See `ads.txt` for verification.
 
 ---
 

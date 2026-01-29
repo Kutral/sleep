@@ -29,9 +29,72 @@
     animation: fadeIn 1s ease 1s both;
 }
 
+/* Breathing Background */
+.breathing-bg {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 600px;
+    height: 600px;
+    background: radial-gradient(circle, rgba(139, 92, 246, 0.15) 0%, transparent 70%);
+    border-radius: 50%;
+    z-index: -1;
+    pointer-events: none;
+    animation: breathe 8s infinite ease-in-out;
+}
+
+@keyframes breathe {
+
+    0%,
+    100% {
+        transform: translate(-50%, -50%) scale(1);
+        opacity: 0.3;
+    }
+
+    50% {
+        transform: translate(-50%, -50%) scale(1.2);
+        opacity: 0.6;
+    }
+}
+
+.headline-main {
+    font-size: 1.5rem;
+    font-weight: 300;
+    color: var(--text-primary);
+    margin-bottom: var(--space-md);
+    animation: fadeInUp 1s ease 0.2s both;
+}
+
+.social-proof {
+    font-size: 0.85rem;
+    color: var(--text-muted);
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    margin-top: var(--space-md);
+    animation: fadeIn 1s ease 0.8s both;
+}
+
+.pulse-dot {
+    width: 8px;
+    height: 8px;
+    background-color: #4caf50;
+    border-radius: 50%;
+    box-shadow: 0 0 10px #4caf50;
+    animation: pulse 2s infinite;
+}
+
+.process-preview {
+    font-size: 0.9rem;
+    color: var(--text-secondary);
+    margin-top: var(--space-sm);
+    animation: fadeIn 1s ease 1s both;
+}
+
 /* Script Screen */
 .script-container {
-    max-width: 600px;
+    max-width: 550px;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -39,27 +102,30 @@
 }
 
 .script-body {
-    font-size: 1.25rem;
+    font-size: 1.2rem;
     line-height: 1.9;
     color: var(--text-primary);
-    text-align: center;
+    text-align: left;
     animation: fadeInUp 0.8s ease both;
 }
 
 /* Action Screen */
 .action-container {
-    max-width: 500px;
+    max-width: 480px;
     display: flex;
     flex-direction: column;
-    align-items: center;
+    align-items: flex-start;
     gap: var(--space-lg);
-    text-align: center;
+    text-align: left;
+    width: 100%;
 }
 
 .action-prompt {
-    font-size: 1rem;
+    font-size: 0.95rem;
     color: var(--text-secondary);
     animation: fadeIn 0.6s ease both;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
 }
 
 .action-card {
@@ -79,6 +145,24 @@
     display: flex;
     gap: var(--space-sm);
     animation: fadeIn 0.5s ease 0.4s both;
+    width: 100%;
+}
+
+@media (max-width: 480px) {
+    .action-buttons {
+        flex-direction: column;
+    }
+
+    .action-buttons button {
+        width: 100%;
+        text-align: center;
+    }
+
+    .screen {
+        padding-bottom: calc(var(--space-lg) + env(safe-area-inset-bottom, 20px));
+        overflow-y: auto;
+        /* Allow scrolling if content is tall */
+    }
 }
 
 /* Log Screen */

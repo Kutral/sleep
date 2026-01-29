@@ -20,8 +20,10 @@ const BoxBreathing = {
         const box = document.querySelector('.box-breathing');
         if (box) {
             box.classList.remove('is-animating');
-            void box.offsetWidth; // Force reflow to reset animation
-            box.classList.add('is-animating');
+            // Use timeout to ensure reflow/restart works reliably
+            setTimeout(() => {
+                box.classList.add('is-animating');
+            }, 50);
         }
 
         if (labels[0]) labels[0].classList.add('active');
@@ -56,3 +58,5 @@ const BoxBreathing = {
         labels.forEach(el => el.classList.remove('active'));
     }
 };
+
+window.BoxBreathing = BoxBreathing;

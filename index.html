@@ -36,13 +36,31 @@
         <!-- Screen 1: Home -->
         <section id="screen-home" class="screen active">
             <div class="home-container">
+                <div class="breathing-bg"></div>
                 <p class="whisper">It's okay to be here.</p>
+
+                <h1 class="headline-main">The night is long, but it ends.</h1>
+
                 <button id="btn-anxious" class="btn-main" aria-label="I'm awake and anxious">
                     I'm awake and anxious
                 </button>
 
+                <div class="social-proof">
+                    <span class="pulse-dot"></span> 1,247 people found relief tonight
+                </div>
+
+                <p class="process-preview">
+                    Takes 2 minutes: Release worry &rarr; Breathe &rarr; Sound
+                </p>
+
                 <div class="global-controls"
                     style="position: absolute; top: 20px; right: 20px; display: flex; flex-direction: column; gap: 10px; align-items: flex-end;">
+                    <div id="progress-dots" class="progress-dots">
+                        <span class="dot"></span>
+                        <span class="dot"></span>
+                        <span class="dot"></span>
+                        <span class="dot"></span>
+                    </div>
                     <div style="display: flex; gap: 10px;">
                         <button id="btn-journal" class="btn-icon" aria-label="Open Journal">
                             📓
@@ -141,6 +159,9 @@
                     <p class="candle-base">Focus on the flame</p>
                 </div>
 
+                <!-- Cognitive Shuffle Container -->
+                <div id="shuffle-container" class="shuffle-container" style="display: none;"></div>
+
                 <div class="rescue-buttons">
                     <button id="btn-rescue-done" class="btn-main">This helped</button>
                     <button id="btn-rescue-next" class="btn-ghost">Try something else</button>
@@ -206,6 +227,7 @@
     <script src="techniques/breath478.js"></script>
     <script src="techniques/candleFlicker.js"></script>
     <script src="techniques/worryBurner.js"></script>
+    <script src="techniques/cognitiveShuffle.js"></script>
 
     <!-- Modules -->
     <script src="modules/sleepJournal.js"></script>

@@ -29,6 +29,9 @@ const TechniqueManager = {
                 if (candleContainer) candleContainer.style.display = 'flex';
                 CandleFlicker.start();
             }
+        } else if (method.title === "Cognitive Shuffling" && window.CognitiveShuffle) {
+            UIManager.elements.rescueContent.style.display = 'none';
+            CognitiveShuffle.start();
         }
     },
 
@@ -41,5 +44,6 @@ const TechniqueManager = {
             if (candleContainer) candleContainer.style.display = 'none';
         }
         if (window.WorryBurner) WorryBurner.stop();
+        if (window.CognitiveShuffle) CognitiveShuffle.stop();
     }
 };

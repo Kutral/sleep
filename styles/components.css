@@ -11,7 +11,10 @@
     color: var(--text-primary);
     background: var(--bg-card);
     border: 1px solid var(--border-subtle);
-    padding: var(--space-md) var(--space-xl);
+    padding: 1.5rem 3rem;
+    /* 2x size */
+    font-size: 1.3rem;
+    /* Larger text */
     border-radius: 50px;
     cursor: pointer;
     transition: all var(--transition-medium);
@@ -169,4 +172,40 @@
     /* Gold color on hover */
     text-shadow: 0 0 10px rgba(255, 215, 0, 0.5);
     border-color: rgba(255, 215, 0, 0.5);
+}
+
+/* Progress Dots */
+.progress-dots {
+    display: flex;
+    gap: 6px;
+    padding: 8px 0;
+    opacity: 0;
+    transition: opacity 0.5s ease;
+}
+
+.progress-dots.visible {
+    opacity: 1;
+}
+
+.dot {
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    background: var(--text-muted);
+    opacity: 0.25;
+    transition: all 0.4s ease;
+}
+
+.dot.active {
+    background: var(--accent-warm);
+    opacity: 0.9;
+    box-shadow: 0 0 6px var(--accent-glow);
+}
+
+/* Micro-elements: Dividers */
+.divider-subtle {
+    width: 60px;
+    height: 1px;
+    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.08), transparent);
+    margin: var(--space-md) auto;
 }

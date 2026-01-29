@@ -55,6 +55,45 @@ const UIManager = {
             // Special Entry Actions
             if (name === 'end') this.randomizeEndMessage();
         }
+
+        // 4. Update Progress Dots
+        this.updateProgress(name);
+    },
+
+    updateProgress(screenName) {
+        const progressMap = {
+            'home': 0,
+            'script': 1,
+            'action': 2,
+            'breathe': 3,
+            'rescue': 3,
+            'log': 3,
+            'worry': 3,
+            'permission': 4,
+            'end': 4,
+            'journal': 0
+        };
+
+        const step = progressMap[screenName] || 0;
+        const container = document.getElementById('progress-dots');
+        if (!container) return;
+
+        // Show/hide based on step
+        if (step === 0) {
+            container.classList.remove('visible');
+        } else {
+            container.classList.add('visible');
+        }
+
+        // Update dots
+        const dots = container.querySelectorAll('.dot');
+        dots.forEach((dot, index) => {
+            if (index < step) {
+                dot.classList.add('active');
+            } else {
+                dot.classList.remove('active');
+            }
+        });
     },
 
     typeWriter(text, elementId, speed = 30) {

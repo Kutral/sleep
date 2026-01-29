@@ -17,6 +17,13 @@ const BoxBreathing = {
         ];
 
         // Initial state
+        const box = document.querySelector('.box-breathing');
+        if (box) {
+            box.classList.remove('is-animating');
+            void box.offsetWidth; // Force reflow to reset animation
+            box.classList.add('is-animating');
+        }
+
         if (labels[0]) labels[0].classList.add('active');
 
         const update = () => {
@@ -40,8 +47,12 @@ const BoxBreathing = {
             clearInterval(this.interval);
             this.interval = null;
         }
+
+        const box = document.querySelector('.box-breathing');
+        if (box) box.classList.remove('is-animating');
+
         // Cleanup active classes
-        const labels = document.querySelectorAll('.breathing-label');
+        const labels = document.querySelectorAll('.breathe-label');
         labels.forEach(el => el.classList.remove('active'));
     }
 };

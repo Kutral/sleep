@@ -30,9 +30,14 @@
     background: var(--accent-warm);
     border-radius: 50%;
     position: absolute;
+    top: -10px;
+    left: -10px;
     box-shadow: 0 0 20px var(--accent-warm);
-    animation: boxPath 16s linear infinite;
     z-index: 2;
+}
+
+.box-breathing.is-animating .box-dot {
+    animation: boxPath 16s linear infinite;
 }
 
 .breathe-label {
@@ -94,29 +99,22 @@
 }
 
 @keyframes boxPath {
-    0% {
-        top: -10px;
-        left: -10px;
+
+    0%,
+    100% {
+        transform: translate(0, 0);
     }
 
     25% {
-        top: -10px;
-        left: 190px;
+        transform: translate(200px, 0);
     }
 
     50% {
-        top: 190px;
-        left: 190px;
+        transform: translate(200px, 200px);
     }
 
     75% {
-        top: 190px;
-        left: -10px;
-    }
-
-    100% {
-        top: -10px;
-        left: -10px;
+        transform: translate(0, 200px);
     }
 }
 

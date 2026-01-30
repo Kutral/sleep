@@ -32,6 +32,35 @@
     /* Animation */
     --transition-slow: 600ms ease;
     --transition-medium: 300ms ease;
+    /* Animation */
+    --transition-slow: 600ms ease;
+    --transition-medium: 300ms ease;
+}
+
+/* Twilight Mode (Extreme Warmth/Red Shift) */
+body.twilight-mode {
+    --bg-primary: #050403;
+    --bg-secondary: #0d0a08;
+    --bg-card: #14100c;
+
+    --text-primary: #d68c45;
+    /* Deep Amber */
+    --text-secondary: #965a32;
+    /* Dimmer Brown-Orange */
+    --text-muted: #5c3a21;
+
+    --accent-warm: #ff6b35;
+    /* Burning Orange */
+    --accent-glow: rgba(255, 107, 53, 0.15);
+
+    --border-subtle: rgba(255, 107, 53, 0.08);
+}
+
+body.twilight-mode #hypnotic-canvas,
+body.twilight-mode .burn-canvas {
+    opacity: 0.15 !important;
+    filter: sepia(1) hue-rotate(-50deg) saturate(3);
+    /* Red-shift effect */
 }
 
 /* Reset & Base */
@@ -56,7 +85,7 @@ body {
     min-height: 100vh;
     min-height: 100dvh;
     line-height: 1.7;
-    overflow: hidden;
+    overflow: auto;
 }
 
 #app {
@@ -293,5 +322,37 @@ body {
 @media all and (display-mode: standalone) {
     .footer-text {
         display: none;
+    }
+}
+
+/* Custom Scrollbar for sleek look */
+::-webkit-scrollbar {
+    width: 6px;
+    height: 6px;
+}
+
+::-webkit-scrollbar-track {
+    background: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 3px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: rgba(255, 255, 255, 0.2);
+}
+
+/* Firefox */
+html {
+    scrollbar-width: thin;
+    scrollbar-color: rgba(255, 255, 255, 0.1) transparent;
+}
+
+/* Optimize screen padding for mobile */
+@media (max-width: 480px) {
+    .screen {
+        padding: var(--space-sm);
     }
 }

@@ -34,61 +34,72 @@
 
     <div id="app">
         <!-- Screen 1: Home -->
-        <section id="screen-home" class="screen active">
+        <section id="screen-home" class="screen active"
+            style="display: block !important; overflow-y: auto !important; overflow-x: hidden !important; align-items: flex-start !important; justify-content: flex-start !important;">
             <div class="home-container">
+                <!-- Breathing Background Animation -->
                 <div class="breathing-bg"></div>
-                <p class="whisper">It's okay to be here.</p>
 
-                <h1 class="headline-main">The night is long, but it ends.</h1>
+                <!-- Top Bar: Minimal Controls -->
+                <header class="home-header">
+                    <button id="btn-journal" class="btn-icon" aria-label="Open Journal">📓</button>
+                    <div class="header-spacer"></div>
+                    <button id="btn-twilight" class="btn-icon" aria-label="Toggle Twilight Mode">🌙</button>
+                    <button id="btn-noise" class="btn-icon" aria-label="Toggle Brown Noise">🔇</button>
+                </header>
 
-                <button id="btn-anxious" class="btn-main" aria-label="I'm awake and anxious">
-                    I'm awake and anxious
-                </button>
+                <!-- Main Hero Content -->
+                <main class="home-main">
+                    <p class="whisper">It's okay to be here.</p>
+                    <h1 class="headline-main">The night is long,<br>but it ends.</h1>
 
-                <div class="social-proof">
-                    <span class="pulse-dot"></span> 1,247 people found relief tonight
-                </div>
+                    <button id="btn-anxious" class="btn-main" aria-label="I'm awake and anxious">
+                        I'm awake and anxious
+                    </button>
 
-                <p class="process-preview">
-                    Takes 2 minutes: Release worry &rarr; Breathe &rarr; Sound
-                </p>
-
-                <div class="global-controls"
-                    style="position: absolute; top: 20px; right: 20px; display: flex; flex-direction: column; gap: 10px; align-items: flex-end;">
-                    <div id="progress-dots" class="progress-dots">
-                        <span class="dot"></span>
-                        <span class="dot"></span>
-                        <span class="dot"></span>
-                        <span class="dot"></span>
+                    <div class="social-proof">
+                        <span class="pulse-dot"></span> 1,247 people found relief tonight
                     </div>
-                    <div style="display: flex; gap: 10px;">
-                        <button id="btn-journal" class="btn-icon" aria-label="Open Journal">
-                            📓
-                        </button>
-                        <button id="btn-twilight" class="btn-icon" aria-label="Toggle Twilight Mode">
-                            🌙
-                        </button>
-                        <button id="btn-noise" class="btn-icon" aria-label="Toggle Brown Noise">
-                            🔇
-                        </button>
-                    </div>
-                    <div class="sound-controls-wrapper">
-                        <p class="sound-label">Soundscapes</p>
-                        <div class="sound-controls" id="sound-controls">
-                            <button class="btn-sound" data-sound="rain">🌧️ Rain</button>
-                            <button class="btn-sound" data-sound="fire">🔥 Fire</button>
-                            <button class="btn-sound" data-sound="thunder">⛈️ Thunder</button>
-                        </div>
-                    </div>
+                </main>
 
-                    <p class="trust-signal">OFFLINE READY • NO TRACKING • NO SIGNUP</p>
-
-                    <p class="footer-text">
-                        <a href="about.html" style="color: inherit; text-decoration: none;">About</a> •
-                        <a href="privacy.html" style="color: inherit; text-decoration: none;">Privacy</a> •
-                        <a href="contact.html" style="color: inherit; text-decoration: none;">Contact</a>
+                <!-- Scrollable Content Section for AdSense -->
+                <article class="home-article">
+                    <h2>Understanding Sleep Anxiety</h2>
+                    <p>
+                        Sleep anxiety is a self-reinforcing loop. The fear of not sleeping creates a stress response,
+                        which prevents sleep.
+                        SAT uses <strong>Cognitive Behavioral Therapy for Insomnia (CBT-I)</strong> principles to break
+                        this cycle.
                     </p>
-                </div>
+                    <h3>The Tools</h3>
+                    <ul>
+                        <li><strong>Box Breathing:</strong> Downregulates your nervous system.</li>
+                        <li><strong>Cognitive Shuffling:</strong> Scrambles thought patterns.</li>
+                        <li><strong>Worry Burning:</strong> Clears working memory.</li>
+                    </ul>
+                    <p class="disclaimer">
+                        This is not a medical device. <a href="terms.html">Terms</a> | <a href="resources.html">Learn
+                            More</a>
+                    </p>
+                </article>
+
+                <!-- Footer -->
+                <footer class="home-footer">
+                    <div class="sound-controls" id="sound-controls">
+                        <button class="btn-sound" data-sound="rain">🌧️</button>
+                        <button class="btn-sound" data-sound="fire">🔥</button>
+                        <button class="btn-sound" data-sound="thunder">⛈️</button>
+                    </div>
+                    <nav class="footer-links">
+                        <a href="about.html">About</a>
+                        <a href="resources.html">Resources</a>
+                        <a href="terms.html">Terms</a>
+                        <a href="privacy.html">Privacy</a>
+                        <a href="contact.html">Contact</a>
+                    </nav>
+                    <p class="trust-signal">OFFLINE READY • NO TRACKING • NO SIGNUP</p>
+                </footer>
+            </div>
         </section>
 
         <!-- Screen 2: Script -->
@@ -135,12 +146,15 @@
                     <span class="breathe-label label-left">Hold</span>
                     <div class="box-dot"></div>
                 </div>
-                <!-- Box visualization (CSS handled) -->
 
                 <div class="breathe-buttons">
                     <button id="btn-breathe-done" class="btn-ghost">I'm calmer</button>
                     <button id="btn-breathe-fail" class="btn-text-danger">Still not well</button>
                 </div>
+                <p class="content-link" style="margin-top: 1.5rem; font-size: 0.85rem; color: var(--text-muted);">
+                    <a href="articles/box-breathing.html" style="color: var(--text-secondary);">Learn how box breathing
+                        works →</a>
+                </p>
             </div>
         </section>
 
@@ -166,6 +180,10 @@
                     <button id="btn-rescue-done" class="btn-main">This helped</button>
                     <button id="btn-rescue-next" class="btn-ghost">Try something else</button>
                 </div>
+                <p class="content-link" style="margin-top: 1rem; font-size: 0.85rem; color: var(--text-muted);">
+                    <a href="articles/cognitive-shuffle.html" style="color: var(--text-secondary);">Learn about these
+                        techniques →</a>
+                </p>
             </div>
         </section>
 
@@ -181,6 +199,10 @@
                     <button id="btn-worry-skip" class="btn-ghost">Skip</button>
                 </div>
                 <canvas id="burn-canvas" class="burn-canvas"></canvas>
+                <p class="content-link" style="margin-top: 1rem; font-size: 0.85rem; color: var(--text-muted);">
+                    <a href="articles/worry-burning.html" style="color: var(--text-secondary);">Learn about expressive
+                        writing →</a>
+                </p>
             </div>
         </section>
 
@@ -195,6 +217,10 @@
                     <button id="btn-journal-clear" class="btn-ghost">Clear</button>
                     <button id="btn-journal-back" class="btn-ghost">Back</button>
                 </div>
+                <p class="content-link" style="margin-top: 1rem; font-size: 0.85rem; color: var(--text-muted);">
+                    <a href="articles/journaling.html" style="color: var(--text-secondary);">Learn about nighttime
+                        journaling →</a>
+                </p>
             </div>
         </section>
 
@@ -231,6 +257,7 @@
 
     <!-- Modules -->
     <script src="modules/sleepJournal.js"></script>
+    <script src="modules/cookieConsent.js"></script>
     <script src="modules/state.js"></script>
     <script src="modules/audio.js"></script>
     <script src="modules/canvas.js"></script>

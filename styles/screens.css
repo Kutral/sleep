@@ -3,13 +3,61 @@
    Individual screen layouts (Home, Script, Action, Log, Rescue, etc.)
    ============================================ */
 
-/* Home Screen */
+/* =========================================
+   HOME SCREEN - Minimal & Soothing Redesign
+   ========================================= */
+
+/* Override parent .screen centering for Home screen */
+#screen-home {
+    display: block !important;
+    overflow-y: auto !important;
+    overflow-x: hidden !important;
+    align-items: flex-start !important;
+    justify-content: flex-start !important;
+}
+
+/* Allow scrolling when home screen is active */
+body:has(#screen-home.active) {
+    overflow: visible !important;
+}
+
 .home-container {
+    display: block;
+    position: relative;
+    overflow-x: hidden;
+}
+
+/* Header - Fixed at top */
+.home-header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    gap: var(--space-sm);
+    padding: var(--space-md) var(--space-lg);
+    z-index: 100;
+    background: linear-gradient(to bottom, rgba(10, 10, 10, 0.8) 0%, transparent 100%);
+}
+
+.home-header .header-spacer {
+    flex-grow: 1;
+}
+
+/* Main Hero Section - FULL VIEWPORT */
+.home-main {
+    min-height: 100vh;
+    min-height: 100dvh;
     display: flex;
     flex-direction: column;
     align-items: center;
+    justify-content: center;
     text-align: center;
     gap: var(--space-lg);
+    padding: var(--space-xl) var(--space-lg);
+    box-sizing: border-box;
 }
 
 .whisper {
@@ -20,49 +68,11 @@
     animation: fadeIn 1s ease 0.5s both;
 }
 
-.footer-text {
-    font-family: var(--font-ui);
-    font-size: 0.7rem;
-    color: var(--text-muted);
-    letter-spacing: 0.05em;
-    text-transform: uppercase;
-    animation: fadeIn 1s ease 1s both;
-}
-
-/* Breathing Background */
-.breathing-bg {
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    width: 600px;
-    height: 600px;
-    background: radial-gradient(circle, rgba(139, 92, 246, 0.15) 0%, transparent 70%);
-    border-radius: 50%;
-    z-index: -1;
-    pointer-events: none;
-    animation: breathe 8s infinite ease-in-out;
-}
-
-@keyframes breathe {
-
-    0%,
-    100% {
-        transform: translate(-50%, -50%) scale(1);
-        opacity: 0.3;
-    }
-
-    50% {
-        transform: translate(-50%, -50%) scale(1.2);
-        opacity: 0.6;
-    }
-}
-
 .headline-main {
-    font-size: 1.5rem;
+    font-size: clamp(1.5rem, 5vw, 2rem);
     font-weight: 300;
     color: var(--text-primary);
-    margin-bottom: var(--space-md);
+    line-height: 1.4;
     animation: fadeInUp 1s ease 0.2s both;
 }
 
@@ -85,14 +95,164 @@
     animation: pulse 2s infinite;
 }
 
-.process-preview {
-    font-size: 0.9rem;
-    color: var(--text-secondary);
-    margin-top: var(--space-sm);
-    animation: fadeIn 1s ease 1s both;
+/* Breathing Background */
+.breathing-bg {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 500px;
+    height: 500px;
+    max-width: 100vw;
+    max-height: 100vh;
+    background: radial-gradient(circle, rgba(139, 92, 246, 0.1) 0%, transparent 70%);
+    border-radius: 50%;
+    z-index: -1;
+    pointer-events: none;
+    animation: breathe 8s infinite ease-in-out;
 }
 
-/* Script Screen */
+@keyframes breathe {
+
+    0%,
+    100% {
+        transform: translate(-50%, -50%) scale(1);
+        opacity: 0.3;
+    }
+
+    50% {
+        transform: translate(-50%, -50%) scale(1.15);
+        opacity: 0.5;
+    }
+}
+
+/* Article Section (AdSense Content) */
+.home-article {
+    background: rgba(255, 255, 255, 0.03);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    border-radius: 16px;
+    padding: var(--space-lg);
+    margin: var(--space-lg) auto;
+    max-width: 600px;
+    text-align: left;
+    animation: fadeIn 1s ease 1.2s both;
+}
+
+.home-article h2 {
+    font-size: 1.1rem;
+    color: var(--accent-warm);
+    margin-bottom: var(--space-sm);
+    font-weight: 500;
+}
+
+.home-article h3 {
+    font-size: 0.95rem;
+    color: var(--text-primary);
+    margin-top: var(--space-md);
+    margin-bottom: var(--space-xs);
+}
+
+.home-article p {
+    font-size: 0.9rem;
+    color: var(--text-secondary);
+    line-height: 1.7;
+    margin-bottom: var(--space-sm);
+}
+
+.home-article ul {
+    padding-left: 1.2rem;
+    margin-bottom: var(--space-sm);
+}
+
+.home-article li {
+    font-size: 0.9rem;
+    color: var(--text-secondary);
+    line-height: 1.6;
+    margin-bottom: 0.4rem;
+}
+
+.home-article .disclaimer {
+    font-size: 0.8rem;
+    color: var(--text-muted);
+    margin-top: var(--space-md);
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+    padding-top: var(--space-sm);
+}
+
+.home-article .disclaimer a {
+    color: var(--text-secondary);
+    text-decoration: underline;
+    text-decoration-color: rgba(255, 255, 255, 0.2);
+}
+
+/* Footer */
+.home-footer {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: var(--space-md);
+    padding: var(--space-lg) 0;
+    padding-bottom: calc(var(--space-lg) + env(safe-area-inset-bottom, 10px));
+    flex-shrink: 0;
+}
+
+.sound-controls {
+    display: flex;
+    gap: var(--space-sm);
+}
+
+.sound-controls .btn-sound {
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 50%;
+    width: 48px;
+    height: 48px;
+    font-size: 1.3rem;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.sound-controls .btn-sound:hover,
+.sound-controls .btn-sound.active {
+    background: rgba(139, 92, 246, 0.2);
+    border-color: var(--accent-soft);
+    transform: scale(1.1);
+}
+
+.footer-links {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: var(--space-sm) var(--space-md);
+}
+
+.footer-links a {
+    font-size: 0.75rem;
+    color: var(--text-muted);
+    text-decoration: none;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    transition: color 0.2s;
+}
+
+.footer-links a:hover {
+    color: var(--text-secondary);
+}
+
+.trust-signal {
+    font-family: var(--font-ui);
+    font-size: 0.65rem;
+    color: rgba(255, 255, 255, 0.3);
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+}
+
+/* =========================================
+   SCRIPT SCREEN
+   ========================================= */
 .script-container {
     max-width: 550px;
     display: flex;
@@ -109,7 +269,9 @@
     animation: fadeInUp 0.8s ease both;
 }
 
-/* Action Screen */
+/* =========================================
+   ACTION SCREEN
+   ========================================= */
 .action-container {
     max-width: 480px;
     display: flex;
@@ -161,11 +323,12 @@
     .screen {
         padding-bottom: calc(var(--space-lg) + env(safe-area-inset-bottom, 20px));
         overflow-y: auto;
-        /* Allow scrolling if content is tall */
     }
 }
 
-/* Log Screen */
+/* =========================================
+   LOG SCREEN
+   ========================================= */
 .log-container {
     display: flex;
     flex-direction: column;
@@ -188,7 +351,9 @@
     animation: fadeInUp 0.6s ease 0.2s both;
 }
 
-/* End Screen */
+/* =========================================
+   END SCREEN
+   ========================================= */
 .end-container {
     text-align: center;
 }
@@ -200,7 +365,9 @@
     animation: fadeIn 1s ease both;
 }
 
-/* Permission Screen */
+/* =========================================
+   PERMISSION SCREEN
+   ========================================= */
 .permission-container {
     text-align: center;
     padding: var(--space-xl);
@@ -236,7 +403,9 @@
     text-shadow: 0 0 10px rgba(76, 175, 80, 0.3);
 }
 
-/* Journal Screen (Experimental) */
+/* =========================================
+   JOURNAL SCREEN
+   ========================================= */
 .journal-container {
     max-width: 600px;
     width: 90%;
@@ -276,6 +445,13 @@
     transition: border-color 0.3s;
 }
 
+@media (max-width: 480px) {
+    .journal-input {
+        height: 180px;
+        /* Reduced for mobile keyboard */
+    }
+}
+
 .journal-input:focus {
     border-color: var(--accent-warm);
     background: rgba(0, 0, 0, 0.3);
@@ -286,4 +462,25 @@
     gap: var(--space-md);
     justify-content: center;
     align-items: center;
+}
+
+/* =========================================
+   CONTENT EXPLANATION (for technique screens)
+   ========================================= */
+.content-explanation {
+    margin-top: var(--space-lg);
+    padding: var(--space-md);
+    background: rgba(255, 255, 255, 0.02);
+    border-radius: 8px;
+    max-width: 500px;
+}
+
+.content-explanation p {
+    font-size: 0.85rem;
+    color: var(--text-muted);
+    line-height: 1.6;
+}
+
+.content-explanation a {
+    color: var(--text-secondary);
 }

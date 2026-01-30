@@ -12,6 +12,7 @@ const App = {
         if (window.HypnoticCanvas) HypnoticCanvas.init();
         if (window.SoundscapePlus) SoundscapePlus.init();
         if (window.SleepJournal) SleepJournal.init();
+        if (window.CookieConsent) CookieConsent.init();
 
         // Service Worker
         if ('serviceWorker' in navigator) {
@@ -23,9 +24,10 @@ const App = {
         // Twilight Mode
         const btnTwilight = document.getElementById('btn-twilight');
         if (btnTwilight) {
-            btnTwilight.addEventListener('click', () => {
+            btnTwilight.addEventListener('click', (e) => {
                 AudioManager.vibrate(20);
-                StateManager.toggleTwilight();
+                const isTwilight = StateManager.toggleTwilight();
+                e.currentTarget.classList.toggle('active', isTwilight);
             });
         }
 
